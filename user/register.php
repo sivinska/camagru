@@ -2,6 +2,13 @@
 // Include config file
 require_once "../config/database.php";
  
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = $email = $activation_code = "";
 $username_err = $password_err = $confirm_password_err = $email_err = "";
@@ -10,7 +17,7 @@ $username_err = $password_err = $confirm_password_err = $email_err = "";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     //Validate email
-    if(empty(trim($_POST["email"]))){
+    if(empty(test_input($_POST["email"]))){
         $email_err = "Please enter your email.";
     } else{
         // Prepare a select statement
@@ -21,14 +28,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt->bindParam(":email", $param_email, PDO::PARAM_STR);
             
             // Set parameters
-            $param_email = trim($_POST["email"]);
+            $param_email = test_input($_POST["email"]);
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
                 /*if($stmt->rowCount() == 1){
                     $email_err = "This email is already taken.";
                 } else{*/
-                    $email = trim($_POST["email"]);
+                    $email = test_input($_POST["email"]);
                 
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -40,7 +47,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
     // Validate username
-    if(empty(trim($_POST["username"]))){
+    if(empty(test_input($_POST["username"]))){
         $username_err = "Please enter a username.";
     } else{
         // Prepare a select statement
@@ -51,14 +58,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
             
             // Set parameters
-            $param_username = trim($_POST["username"]);
+            $param_username = test_input($_POST["username"]);
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
                 if($stmt->rowCount() == 1){
                     $username_err = "This username is already taken.";
                 } else{
-                    $username = trim($_POST["username"]);
+                    $username = test_input($_POST["username"]);
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -70,19 +77,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     // Validate password
-    if(empty(trim($_POST["password"]))){
+    if(empty(test_input($_POST["password"]))){
         $password_err = "Please enter a password.";     
-    } elseif(strlen(trim($_POST["password"])) < 6){
+    } elseif(strlen(test_input($_POST["password"])) < 6){
         $password_err = "Password must have atleast 6 characters.";
     } else{
-        $password = trim($_POST["password"]);
+        $password = test_input($_POST["password"]);
     }
     
     // Validate confirm password
-    if(empty(trim($_POST["confirm_password"]))){
+    if(empty(test_input($_POST["confirm_password"]))){
         $confirm_password_err = "Please confirm password.";     
     } else{
-        $confirm_password = trim($_POST["confirm_password"]);
+        $confirm_password = test_input($_POST["confirm_password"]);
         if(empty($password_err) && ($password != $confirm_password)){
             $confirm_password_err = "Password did not match.";
         }

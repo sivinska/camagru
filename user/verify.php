@@ -28,12 +28,15 @@ if(isset($_GET['activation_code']))
     $update_query = "
     UPDATE users 
     SET status = 'verified' 
-    WHERE id = '".$row['id']."'
+    WHERE username = :username
     ";
     $stmt = $pdo->prepare($update_query);
-    $stmt->execute();
+    $stmt->execute(
+        array(
+            ':username' => $_GET['username']
+        )
+    );
     $sub_result = $stmt->fetchAll();
-    var_dump($sub_result);
     if(isset($sub_result))
     {
      $message = '<label class="text-success">Your Email Address Successfully Verified <br />You can login here - <a href="login.php">Login</a></label>';
