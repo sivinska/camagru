@@ -99,7 +99,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($email_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO users (email, username, password, activation_code, status) VALUES (:email, :username, :password, :activation_code, :status)";
+        $sql = "INSERT INTO users (email, username, password, token, activation_code, status) VALUES (:email, :username, :password, :token, :activation_code, :status)";
          
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
@@ -108,7 +108,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
             $stmt->bindParam(":activation_code", $param_activation_code, PDO::PARAM_STR);
             $stmt->bindParam(":status", $param_status, PDO::PARAM_STR);
-            
+            $stmt->bindParam(":token", $param_token, PDO::PARAM_STR);      
+            var_dump($stmt);      
             
             // Set parameters
             $param_email = $email;
@@ -116,6 +117,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
             $param_activation_code = md5( rand(0,1000) );
             $param_status = 'not verified';
+            $param_token = md5( rand(0,1000) );
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
