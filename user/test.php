@@ -18,7 +18,7 @@ function test_input($data) {
   }
 
 
-if ($_SESSION["loggedin"] && $_SERVER["REQUEST_METHOD"] == "POST")
+if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
     if(empty(test_input($_POST["username"])))
 		$username_err = "Please enter your username.";
@@ -33,10 +33,11 @@ if ($_SESSION["loggedin"] && $_SERVER["REQUEST_METHOD"] == "POST")
 
 	if (empty($username_err) && empty($email_err))
 	{
-		$sql = "SELECT token FROM users WHERE username = :username";
+		$sql = "SELECT * FROM users WHERE username = :username AND email = :email";
 		if($stmt =$pdo->prepare($sql))
 		{
             $stmt->bindParam(":username", $username, PDO::PARAM_STR);
+            $stmt->bindParam(":email", $email, PDO::PARAM_STR);
 
             $stmt->execute();
 
