@@ -5,10 +5,10 @@ require_once "../config/database.php";
 $username = $email = "";
 $username_err = $email_err = "";
 
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+/*if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
-}
+}*/
 
 function test_input($data) {
     $data = trim($data);
@@ -41,8 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
             $stmt->execute();
 
-            $result = $stmt->fetch();
-            $param_token = $result['token'];
+			$result = $stmt->fetchAll();
+            $param_token = $result[0]['token'];
             var_dump($param_token);
 
 
