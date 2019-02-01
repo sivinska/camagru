@@ -1,10 +1,10 @@
 <?php
 session_start();
  
-/*if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: welcome.php");
     exit;
-}*/
+}
  
 require_once "../config/database.php";
 
@@ -34,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     if(empty($username_err) && empty($password_err)){
-        $sql = "SELECT id, username, password, status FROM users WHERE username = :username";
+        $sql = "SELECT * FROM users WHERE username = :username";
         
         if($stmt = $pdo->prepare($sql)){
             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
@@ -44,15 +44,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if($stmt->execute()){
                 if($stmt->rowCount() == 1){
                     if($row = $stmt->fetchAll()){
-                    //    var_dump($row);
                         if ($row[0]['status'] == 'verified'){
-                      //      var_dump($row[0]['status']);
                         $id = $row[0]["id"];
                         $username = $row[0]["username"];
-                      //  var_dump($username);
                         $hashed_password = $row[0]["password"];
-                       // $password = password_hash('katinas', PASSWORD_DEFAULT);
-                      //  var_dump($password);
                         if(password_verify($password, $hashed_password)){
                             session_start();
                             

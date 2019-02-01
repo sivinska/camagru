@@ -161,7 +161,112 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 ?>
  
-<!DOCTYPE html>
+ <!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>camagru</title>
+  
+  
+  
+      <link rel="stylesheet" href="style.css">
+
+  
+</head>
+
+<body>
+
+  <html lang="en"><head>
+	<title>Create an account</title>
+	<meta charset="UTF-8">
+</head>
+<body style="background-color: #666666;">
+	
+	<div class="limits">
+		<div class="container">
+			<div class="wrap">
+				<div>
+        
+        <form class="form">
+          <span class="form-title padding">Sign Up</span>
+        <span class="form-title padding">Please fill this form to create an account.</span>
+          
+            <div class="wrap-input validate-input">
+                <label>Email</label>
+                <input class="input100" type="email" name="email">
+                <span class="help-block"><?php echo $email_err; ?></span>
+            </div> 
+
+            <div class="wrap-input validate-input">
+                <label>Username</label>
+                <input class="input100" type="text" name="username">
+                <span class="help-block"><?php echo $username_err; ?></span>
+            </div>    
+            <div class="wrap-input validate-input">
+                <label>Password</label>
+                <input class="input100" type="password" name="password">
+                <span class="help-block"><?php echo $password_err; ?></span>
+            </div>
+            <div class="wrap-input validate-input">
+                <label>Confirm Password</label>
+                <input class="input100" type="password" name="confirm_password">
+                <span class="help-block"><?php echo $confirm_password_err; ?></span>
+            </div>
+            <div class="container-form-btn">
+              <button class="form-btn">Register</button>
+ 
+            </div>
+          <div class="text-center p-t-46 p-b-20">
+						<span >
+							Already have an account? <a href="login.php">Login here</a>.
+						</span>
+					</div>
+            
+        </form>
+    </div>    
+
+				<div class="more" style="background-image: url('https://images.unsplash.com/photo-1465161191540-aac346fcbaff?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80');">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+
+	
+	
+
+	
+
+	
+
+	
+	
+
+	
+
+	
+	
+
+	
+
+	
+
+
+</body></html>
+  
+  
+
+</body>
+
+</html>
+
+
+
+
+
+<!--!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
