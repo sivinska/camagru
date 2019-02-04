@@ -78,38 +78,42 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 ?>
  
-<!DOCTYPE html>
-<html lang="en">
+ <!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 350px; padding: 20px; }
-    </style>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">  
 </head>
+
 <body>
-    <div class="wrapper">
-        <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
-                <span class="help-block"><?php echo $username_err; ?></span>
-            </div>    
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control">
-                <span class="help-block"><?php echo $password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Login">
-            </div>
-            <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
-            <p>Forgot your password? <a href="test.php">Click here</a>.</p>
-        </form>
+    <div class="container-login100" style="background-image: url('https://images.unsplash.com/photo-1536744086449-fb029cf3aeba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');">
+        <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+        <span class="login100-form-title p-b-37">Login</span>
+            <form class="login100-form validate-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+
+                <span class="help-block"><?php echo $username_err; ?></span> 
+                <div class="wrap-input100 validate-input m-b-25"  class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                <!--label>Username</label-->
+                <input class="input100" type="text" name="username" placeholder="Username" class="form-control" value="<?php echo $username; ?>">
+                <span class="focus-input100"></span>
+                </div>
+
+                <span class="help-block"><?php echo $password_err; ?></span>   
+                <div class="wrap-input100 validate-input m-b-25" class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                <!--label>Password</label-->
+                <input class="input100" type="password" name="password" placeholder="Password" class="form-control" value="<?php echo $password; ?>">
+                <span class="focus-input100"></span>
+                </div>
+            
+                <div class="container-login100-form-btn">
+                <button class="login100-form-btn">Login</button>
+                </div>
+                <p class ="pstyle">Don't have an account? <a href="register.php">Sign up now</a>.</p>
+                <p class ="pstyle">Forgot your password? <a href="test.php">Click here</a>.</p>
+                
+            </form>
+        </div>
     </div>
 </body>
 </html>

@@ -90,29 +90,37 @@ unset($pdo);
 
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Password forget</title>
-	</head>
-	<body>
-		<form class="" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-		<div class="wrapper">
-                <h1>Reset your password</h1>
-                <p>Please fill in this form to reset your password.</p>
-                <hr>
-				<label>Username</label>
-				<input type="text" name="username" value="">
-				<span style='color:red;'><?php echo $username_err; ?></span>
-			
-				<label>Email</label>
-				<input type="email" name="email" value="">
-				<span style='color:red;'><?php echo $email_err; ?></span>
-			
+<head>
+  <meta charset="UTF-8">
+  <title>Password reset</title>
+  <link rel="stylesheet" href="style.css">  
+</head>
 
-				<br />
-				<button type="submit" class="btn btn-primary">Reset</button>
-		
-			</div>
-		</form>
-	</body>
+<body>
+    <div class="container-login100" style="background-image: url('https://images.unsplash.com/photo-1519636243899-5544aa477f70?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');">
+        <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+        <span class="login100-form-title p-b-37">Reset your password</span>
+            <form class="login100-form validate-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+
+                <span class="help-block"><?php echo $username_err; ?></span> 
+                <div class="wrap-input100 validate-input m-b-25"  class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                <!--label>Username</label-->
+                <input class="input100" type="text" name="username" placeholder="Username" class="form-control" value="<?php echo $username; ?>">
+                <span class="focus-input100"></span>
+                </div>
+
+                <span class="help-block"><?php echo $email_err; ?></span>
+                <div class="wrap-input100 validate-input m-b-25" class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+                <!--label>Email</label-->
+                <input class="input100" type="email" name="email" placeholder="Email" class="form-control" value="<?php echo $email; ?>">
+                <span class="focus-input100"></span>
+                </div>
+            
+                <div class="container-login100-form-btn">
+                <button class="login100-form-btn">Reset</button>
+                </div>                
+            </form>
+        </div>
+    </div>
+</body>
 </html>
