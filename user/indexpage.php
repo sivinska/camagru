@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,13 +19,22 @@
     <nav>
   <ul>
     <li>
-      <a href="#">Home</a>
+    <?php
+		  	if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
+			{
+				echo '<a href="home.php">Home</a>';
+			}
+			else
+			{
+		        echo '<a href="indexpage.php">Home</a>';
+			}
+		?>
     </li>
     <li>
-      <a href="#">About</a>
+      <a href="#">Gallery</a>
     </li>
     <li>
-      <a href="#">Services</a>
+      <a href="#">Your account</a>
     </li>
     <li>
       <a href="#">Contact</a>
@@ -31,10 +46,10 @@
     <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
     <span class="login100-form-title p-b-37">Welcome to Camagru!</span>
       <div class="welcome-page-btn">
-                <button class="login100-form-btn">Create an account</button>
+                <button class="login100-form-btn"><a class="a1" href="register.php">Create an account</a></button>
                 </div>
       <div class="welcome-page-btn">
-                <button class="login100-form-btn">Login</button>
+                <button class="login100-form-btn"><a class="a1" href="login.php">Login</a></button>
                 </div>
       
   </div>

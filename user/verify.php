@@ -22,16 +22,19 @@ if(isset($_GET['activation_code']))
                 $sub_result = $stmt->fetchAll();
                 if(isset($sub_result)){
                     $message = '<label class="text-success">Your Email Address Successfully Verified <br />You can login here - <a href="login.php">Login</a></label>';
+                    header("Refresh: 5; url=login.php");
                 }
             }
             else{
                 $message = '<label class="text-info">Your Email Address Already Verified</label>';
+                header("Refresh: 5; url=login.php");
             }
         }
     }
     else{
         $message = '<label class="text-danger">Invalid Link</label>';
     }
+    
 }
 
 ?>
