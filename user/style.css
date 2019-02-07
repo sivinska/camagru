@@ -343,6 +343,7 @@ nav ul li a:hover {
     max-width: 600px;
     height: 600px;
     z-index: 1;
+    border: 3px solid;
 }
 
 
@@ -372,7 +373,7 @@ nav ul li a:hover {
     }
 
 .content{
-    background: #e6ebff;
+    background: #fff;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -394,6 +395,7 @@ nav ul li a:hover {
     background-position: center;
     position: relative;
     z-index: 1;
+    justify-content: space-evenly;
 }
 
 .container-camera::before {
@@ -415,4 +417,44 @@ nav ul li a:hover {
 	justify-content: center;
 	flex-direction: column;
 	max-width: 800px;
+}
+
+#div_choose_trees{
+    background: rgb(226, 180, 226);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin-top:100px;
+    padding:10px;
+}
+
+
+.i_trees {
+	opacity: 0.5;
+	border: 3px solid white;
+    border-radius: 20px;
+}
+
+.active, .i_trees:hover {
+	opacity: 1;
+	border: 3px solid plum;
+	border-radius: 20px;
+}
+
+#canvas_copy, #canvas_tree {
+	display: none;
+}
+
+.content-left{
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top:100px;
+    padding:10px;
+  
 }

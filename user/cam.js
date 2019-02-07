@@ -1,6 +1,5 @@
 // Canvas & Filters 
 var video = document.getElementById('videoElement');
-var filter = 'none'; 
 var canvas = document.getElementById("canvas");
 var canvas_tree = document.getElementById("canvas_tree");
 var canvas_copy = document.getElementById("canvas_copy");
@@ -20,8 +19,6 @@ var snap = document.getElementById('snap');
 
 // Hidden forms
 var ctx = canvas.getContext('2d');
-var videoWidth, videoHeight;
-var form_filter = document.getElementById('filter');
 
 // Changes class of selected tree
 var header = document.getElementById("div_choose_trees");
@@ -44,14 +41,14 @@ function treeSelector() {
 
 // Delete Photo
 
-function deletePic(clickedId) {
+/*function deletePic(clickedId) {
     
     if (confirm('Are you sure you want to delete this photo from your Camagreen ?')) {
         var id_to_delete = document.getElementById("id_photo_delete");
         id_to_delete.value = clickedId;
         document.getElementById("photo_delete").submit();
     }
-}
+}*/
 
 function createImg() {
     var canvas = document.getElementById('canvas_copy');
@@ -63,21 +60,15 @@ navigator.mediaDevices.getUserMedia({ audio: false, video: true })
     video.srcObject = stream;
     video.onloadedmetadata = function() {
         snap.disabled = false;
-        videoWidth = video.videoWidth;
-        videoHeight = video.videoHeight;
-        canvas.width  = videoWidth;
-        canvas.height = videoHeight;
-        canvas_copy.width  = videoWidth;
-        canvas_copy.height = videoHeight;
         video.play();
         snap.onclick = function() {
       
             upload.disabled = false;
             var current_tree = treeSelector();
             document.getElementById('tree').value = current_tree.src;
-            canvas.getContext('2d').drawImage(video, 0, 0, videoWidth, videoHeight, 0, 0, videoWidth, videoHeight);
-            canvas.getContext('2d').drawImage(current_tree, 0, 0, videoWidth, videoHeight, 0, 0, videoWidth, videoHeight);
-            canvas_copy.getContext('2d').drawImage(video, 0, 0, videoWidth, videoHeight, 0, 0, videoWidth, videoHeight);
+            canvas.getContext('2d').drawImage(video, -75, 0, 760, 600);
+            canvas.getContext('2d').drawImage(current_tree, 0, 0, 600, 600);
+            canvas_copy.getContext('2d').drawImage(video, -75, 0, 760, 600);
             final_image.style.display = "block";
         }
     };
