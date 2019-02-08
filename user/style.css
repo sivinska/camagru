@@ -458,3 +458,44 @@ nav ul li a:hover {
     padding:10px;
   
 }
+
+#main {
+    background-color: rgba(255,255,255,0.7);
+    width:80%;
+    margin-bottom: 20px;
+    margin-top: 100px;
+    min-width: 320px;
+    padding:15px;
+    max-width:1600px;
+    border-radius:4px;
+}
+
+
+#img {
+	text-align:center;
+	background-color: #7F7F7F;
+	height: 310px;
+	width: 310px;
+  margin:10px;
+  border: 1px solid #7F7F7F;
+  border-radius: 4px;
+  padding:2.5px;  
+}
+
+#img img {
+	height: 300px;
+	width:  300px;
+	object-fit: cover;
+  border: 1px solid #7F7F7F;
+  border-radius: 4px;
+}
+
+#gallery {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+@media screen and (max-width: 1000px) {
+	#main {width:100%}
+}
