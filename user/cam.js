@@ -1,7 +1,7 @@
 // Canvas & Filters 
 var video = document.getElementById('videoElement');
 var canvas = document.getElementById("canvas");
-var canvas_tree = document.getElementById("canvas_tree");
+var canvas_masks = document.getElementById("canvas_masks");
 var canvas_copy = document.getElementById("canvas_copy");
 var overlay_image = document.getElementById("overlay");
 var final_image = document.getElementById("modal_result");
@@ -20,11 +20,11 @@ var snap = document.getElementById('snap');
 // Hidden forms
 var ctx = canvas.getContext('2d');
 
-// Changes class of selected tree
-var header = document.getElementById("div_choose_trees");
-var i_trees = header.getElementsByClassName("i_trees");
-for (var i = 0; i < i_trees.length; i++) {
-  i_trees[i].addEventListener("click", function() {
+// Changes class of selected masks
+var header = document.getElementById("div_choose_masks");
+var i_masks = header.getElementsByClassName("i_masks");
+for (var i = 0; i < i_masks.length; i++) {
+  i_masks[i].addEventListener("click", function() {
     active_photo = document.getElementsByClassName("active");
     active_photo[0].className = active_photo[0].className.replace(" active", "");
     this.className += " active";
@@ -32,11 +32,11 @@ for (var i = 0; i < i_trees.length; i++) {
   });
 }
 
-// Return currently selected tree
-function treeSelector() {
-    var header = document.getElementById("div_choose_trees");
-    var selected_tree = header.getElementsByClassName("active");
-    return selected_tree[0];
+// Return currently selected masks
+function masksSelector() {
+    var header = document.getElementById("div_choose_masks");
+    var selected_masks = header.getElementsByClassName("active");
+    return selected_masks[0];
 }
 
 // Delete Photo
@@ -64,11 +64,11 @@ navigator.mediaDevices.getUserMedia({ audio: false, video: true })
         snap.onclick = function() {
       
             upload.disabled = false;
-            var current_tree = treeSelector();
-            document.getElementById('tree').value = current_tree.src;
-            canvas.getContext('2d').drawImage(video, -75, 0, 760, 600);
-            canvas.getContext('2d').drawImage(current_tree, 0, 0, 600, 600);
-            canvas_copy.getContext('2d').drawImage(video, -75, 0, 760, 600);
+            var current_masks = masksSelector();
+            document.getElementById('masks').value = current_masks.src;
+            canvas.getContext('2d').drawImage(video, -30, 0, 375, 300);
+            canvas.getContext('2d').drawImage(current_masks, 0, 0, 300, 300);
+            canvas_copy.getContext('2d').drawImage(video, -30, 0, 375, 300);
             final_image.style.display = "block";
         }
     };
