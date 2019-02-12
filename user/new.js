@@ -32,9 +32,9 @@ function ajaxSend(data, php, via, callback) {
 }
 
 //register click on #btn_cnvimg to get and save image
-var btn_cnvimg = document.getElementById('startbutton');
+var btn_cnvimg = document.getElementById('save');
 if(btn_cnvimg) btn_cnvimg.addEventListener('click', function(e){
-  var imgname = window.prompt('Set a name for the image.\n- If you set a name that already exists,\n the image will be replaced with current canvas-image\n\nLeave empty to let the script set an unique name.', '');
+  let imgname = Math.random().toString(36).substring(7);
 
   if(imgname !== null){
     //set data that will be send with ajaxSend() to php (base64 PNG image-data of the canvas, and image-name)
@@ -42,10 +42,7 @@ if(btn_cnvimg) btn_cnvimg.addEventListener('click', function(e){
 
     //send image-data to php file
     ajaxSend(img_data, php_file, 'post', function(resp){
-      //show server response in #ajaxresp, if not exist, alert response
-      if(document.getElementById('ajaxresp')) document.getElementById('ajaxresp').innerHTML = resp;
-      else alert(resp);
-    });
+});
   }
 });
 
@@ -110,7 +107,7 @@ if(btn_cnvimg) btn_cnvimg.addEventListener('click', function(e){
       document.getElementsByClassName('mask').value = current_mask.src;
       canvas.getContext('2d').drawImage(video, 0, 0, 300, 300);
       canvas.getContext('2d').drawImage(current_mask, 0, 0, 300, 300);
-      var data = canvas.toDataURL('image/png');
+    
       
      }
   

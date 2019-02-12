@@ -61,9 +61,15 @@ session_start();
     <div id="main">
       <div class="section">    
         <h1>Create your image !</h1>
+            <form method="post" enctype="multipart/form-data">
+            <input type="file" id="imageLoader" name="files[]"/>
+            
+        </form>
         <div id="webcam">
-           <div><img id="overlay"></div>
-          <video id="video"></video>
+           
+            <div><img  id="overlay">
+           
+            <canvas id="canvas_img"></canvas></div>
       </div>
           </div>
       <div class="aside">        
@@ -81,25 +87,26 @@ session_start();
             <button action="save_image.php" class="login100-form-btn" id="save">Save it</button>
           </div>
         <div class="footer">
-            
+           
         
                            
         
        
-        
+        <canvas id="canvas" width="300" height="300"></canvas></div>
               
           
                 
 
 
-                <canvas id="canvas" width="300" height="300"></canvas>
+                
                  
             </div>
         </div>
         
+        <script src="photo.js"></script>
         
-        <script src="new.js"></script>
-       		</div>	
+        
+        		</div>	
         </div>
 
 

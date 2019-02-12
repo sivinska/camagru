@@ -126,7 +126,7 @@ input {
     right: 0;
     pointer-events: none;
     border-radius: 20px;
-    
+    -webkit-box-shadow: 0 5px 30px 0px rgba(0, 0, 0, 0.1);
     transition: all .4s;
 }
 
@@ -222,7 +222,7 @@ button {
 *, *::before, *::after {
     box-sizing: border-box;
 }
-user agent stylesheet
+
 div {
     display: block;
 }
@@ -239,18 +239,7 @@ html, body {
     font-size: 14px;
     line-height: 1.6em;
 }
-html, body {
-    margin: 0;
-    padding: 0;
-    font-size: 14px;
-    line-height: 1.6em;
-}
-*, *::before, *::after {
-    transition: all .3s ease-in-out;
-}
-*, *::before, *::after {
-    box-sizing: border-box;
-}
+
 .overlay::after {
     color: inherit;
     background-color: rgba(0,0,0,.55);
@@ -265,20 +254,13 @@ html, body {
     content: "";
     z-index: -1;
 }
-*, *::before, *::after {
-    transition: all .3s ease-in-out;
-}
-*, *::before, *::after {
-    box-sizing: border-box;
-}
 
 .row1 {
     color: #FFFFFF;
     border-color: rgba(255,255,255,.3);
-}
-.row1 {
     border-bottom: 1px solid;
 }
+
 
 nav {
   max-width: 960px;
@@ -312,12 +294,14 @@ nav ul li a:hover {
 }
 
 
+
 .wrapper {
     position: absolute;
     top: 0px;
     width: 100%;
     text-align: left;
     word-wrap: break-word;
+    z-index: 2;
 }
 
 .welcome-page-btn {
@@ -518,3 +502,15 @@ div {
     margin-bottom: 0;
   }
   
+
+  #canvas_img {
+	text-align:center;
+	background-color: #7F7F7F;
+	height: 595px;
+	width: 595px;
+  
+  border: 1px solid #7F7F7F;
+  border-radius: 4px;
+  
+  object-fit: cover;
+}
