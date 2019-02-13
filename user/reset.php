@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "../config/database.php";
+include "nav.php";
 
 $username = $email = "";
 $username_err = $email_err = "";
@@ -97,29 +98,27 @@ unset($pdo);
 </head>
 
 <body>
-    <div class="container-login100" style="background-image: url('https://images.unsplash.com/photo-1519636243899-5544aa477f70?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');">
-        <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
-        <span class="login100-form-title p-b-37">Reset your password</span>
-            <form class="login100-form validate-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+    <div id="container" class="login">
+        <div class="wrap-login">
+            <span class="form-title">Reset your password</span>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
-                <span class="help-block"><?php echo $username_err; ?></span> 
-                <div class="wrap-input100 validate-input m-b-25"  class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <!--label>Username</label-->
-                <input class="input100" type="text" name="username" placeholder="Username" class="form-control" value="<?php echo $username; ?>">
-                <span class="focus-input100"></span>
-                </div>
+                    <span class="help-block"><?php echo $username_err; ?></span> 
+                    <div class="wrap-input" <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                    <input class="input" type="text" name="username" placeholder="Username" class="form-control" value="<?php echo $username; ?>">
+                    <span class="focus-input"></span>
+                    </div>
 
-                <span class="help-block"><?php echo $email_err; ?></span>
-                <div class="wrap-input100 validate-input m-b-25" class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
-                <!--label>Email</label-->
-                <input class="input100" type="email" name="email" placeholder="Email" class="form-control" value="<?php echo $email; ?>">
-                <span class="focus-input100"></span>
-                </div>
-            
-                <div class="container-login100-form-btn">
-                <button class="login100-form-btn">Reset</button>
-                </div>                
-            </form>
+                    <span class="help-block"><?php echo $email_err; ?></span>
+                    <div class="wrap-input" <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+                    <input class="input" type="email" name="email" placeholder="Email" class="form-control" value="<?php echo $email; ?>">
+                    <span class="focus-input"></span>
+                    </div>
+
+                    <div class="button-container">
+                    <button class="button">Reset</button>
+                    </div>                
+                </form>
         </div>
     </div>
 </body>

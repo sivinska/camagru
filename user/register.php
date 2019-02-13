@@ -1,7 +1,7 @@
 <?php
 // Include config file
 require_once "../config/database.php";
- 
+include "nav.php";
 function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -163,7 +163,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  
 
 
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -172,72 +172,40 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 
 <body>
-<div class="container-login100" class="bgded overlay" style="background-image: url('https://images.unsplash.com/photo-1513652990199-8a52e2313122?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');">
-      <div class="wrapper row1">
-    <nav>
-  <ul>
-    <li>
-    <?php
-		  	if ($_SESSION["loggedin"] == true)
-			{
-				echo '<a href="home.php">Home</a>';
-			}
-			else
-			{
-		        echo '<a href="indexpage.php">Home</a>';
-			}
-		?>
-    </li>
-    <li>
-      <a href="#">Gallery</a>
-    </li>
-    <li>
-      <a href="#">Your account</a>
-    </li>
-    <li>
-      <a href="#">Contact</a>
-    </li>
-  </ul>
-    </nav>
-      </div>
-        <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
-        <span class="login100-form-title p-b-37">Create an account</span>
-            <form class="login100-form validate-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <span class="help-block"><?php echo $email_err; ?></span>
-                <div class="wrap-input100 validate-input m-b-25" class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
-                <!--label>Email</label-->
-                <input class="input100" type="email" name="email" placeholder="Email" class="form-control" value="<?php echo $email; ?>">
-                <span class="focus-input100"></span>
-                </div>
+    <div id="container" class="login">
+        <div class="wrap-login">
+            <span class="form-title">Create an account</span>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <span class="help-block"><?php echo $email_err; ?></span>
+                    <div class="wrap-input" <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+                    <input class="input" type="email" name="email" placeholder="Email" class="form-control" value="<?php echo $email; ?>">
+                    <span class="focus-input"></span>
+                    </div>
 
-                <span class="help-block"><?php echo $username_err; ?></span> 
-                <div class="wrap-input100 validate-input m-b-25"  class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <!--label>Username</label-->
-                <input class="input100" type="text" name="username" placeholder="Username" class="form-control" value="<?php echo $username; ?>">
-                <span class="focus-input100"></span>
-                </div>
+                    <span class="help-block"><?php echo $username_err; ?></span> 
+                    <div class="wrap-input" <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                    <input class="input" type="text" name="username" placeholder="Username" class="form-control" value="<?php echo $username; ?>">
+                    <span class="focus-input"></span>
+                    </div>
 
-                <span class="help-block"><?php echo $password_err; ?></span>   
-                <div class="wrap-input100 validate-input m-b-25" class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <!--label>Password</label-->
-                <input class="input100" type="password" name="password" placeholder="Password" class="form-control" value="<?php echo $password; ?>">
-                <span class="focus-input100"></span>
-                </div>
+                    <span class="help-block"><?php echo $password_err; ?></span>   
+                    <div class="wrap-input" <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                    <input class="input" type="password" name="password" placeholder="Password" class="form-control" value="<?php echo $password; ?>">
+                    <span class="focus-input"></span>
+                    </div>
 
-                <span class="help-block"><?php echo $confirm_password_err; ?></span>
-                <div class="wrap-input100 validate-input m-b-25" class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-                <!--label>Confirm Password</label-->
-                <input class="input100" type="password" name="confirm_password" placeholder="Confirm password" class="form-control" value="<?php echo $confirm_password; ?>">
-                <span class="focus-input100"></span>
-                </div>
-            
-                <div class="container-login100-form-btn">
-                <button class="login100-form-btn">Sign In</button>
-                </div>
-                <div class="text-center p-t-57 p-b-20">
-                    <span class="txt1">Already have an account? <a href="login.php">Login here.</a></span>
-                </div>
-            </form>
+                    <span class="help-block"><?php echo $confirm_password_err; ?></span>
+                    <div class="wrap-input" <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
+                    <input class="input" type="password" name="confirm_password" placeholder="Confirm password" class="form-control" value="<?php echo $confirm_password; ?>">
+                    <span class="focus-input"></span>
+                    </div>
+
+                    <div class="button-container">
+                    <button class="button">Sign In</button>
+                    </div>
+                    <p class="pstyle">Already have an account? <a href="login.php">Login here.</a></span>
+               
+                </form>
         </div>
     </div>
 </body>
