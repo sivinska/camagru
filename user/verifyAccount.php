@@ -22,12 +22,12 @@ if(isset($_GET['activation_code']))
                 $sub_result = $stmt->fetchAll();
                 if(isset($sub_result)){
                     $message = '<label class="text-success">Your Email Address Successfully Verified <br />You can login here - <a href="login.php">Login</a></label>';
-                    header("Refresh: 5; url=login.php");
+                    header("Location: login.php");
                 }
             }
             else{
                 $message = '<label class="text-info">Your Email Address Already Verified</label>';
-                header("Refresh: 5; url=login.php");
+                header("location: login.php");
             }
         }
     }
@@ -38,23 +38,3 @@ if(isset($_GET['activation_code']))
 }
 
 ?>
-<!DOCTYPE html>
-<html>
- <head>
-  <title>PHP Register Login Script with Email Verification</title>  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- </head>
- <body>
-  
-  <div class="container">
-   <h1 align="center">PHP Register Login Script with Email Verification</h1>
-  
-   <h3><?php echo $message; ?></h3>
-   
-  </div>
- 
- </body>
- 
-</html>

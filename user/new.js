@@ -49,6 +49,8 @@ if(btn_cnvimg) btn_cnvimg.addEventListener('click', function(e){
 
 
 
+
+
     var streaming = false,
         video        = document.querySelector('#video'),
         cover        = document.querySelector('#cover'),
@@ -115,5 +117,8 @@ if(btn_cnvimg) btn_cnvimg.addEventListener('click', function(e){
         takepicture();
       ev.preventDefault();
     }, false);
+
+
   
+
   })();

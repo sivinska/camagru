@@ -10,7 +10,7 @@ function test_input($data) {
   }
 
 // Define variables and initialize with empty values
-$username = $password = $confirm_password = $email = $activation_code = "";
+$username = $password = $confirm_password = $email = $activation_code = $success = "";
 $username_err = $password_err = $confirm_password_err = $email_err = "";
  
 // Processing form data when form is submitted
@@ -109,7 +109,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt->bindParam(":activation_code", $param_activation_code, PDO::PARAM_STR);
             $stmt->bindParam(":status", $param_status, PDO::PARAM_STR);
             $stmt->bindParam(":token", $param_token, PDO::PARAM_STR);      
-            var_dump($stmt);      
+                
             
             // Set parameters
             $param_email = $email;
@@ -137,15 +137,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 ------------------------
                  
                 Please click this link to activate your account:
-                http://localhost:8080/user/verify.php?username='.$username.'&activation_code='.$param_activation_code.'
+                http://localhost:8080/user/verifyAccount.php?username='.$username.'&activation_code='.$param_activation_code.'
                  
                 '; // Our message above including the link
                                      
                 $headers = 'From:noreply@camagru.com' . "\r\n"; // Set from headers
-                var_dump(mail($to, $subject, $message, $headers)); // Send our email
-                             
-                // Redirect to login page
-                //header("location: login.php");
+                (mail($to, $subject, $message, $headers));
+                $success ='Activation code has been sent to your account.';
+                header("Refresh: 3; url=login.php");
+                
             } else{
                 echo "Something went wrong. Please try again later.";
             }
@@ -174,34 +174,37 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
     <div id="container" class="login">
         <div class="wrap-login">
+            <span class="success"><?php echo $success; ?></span>
             <span class="form-title">Create an account</span>
+            
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <span class="help-block"><?php echo $email_err; ?></span>
-                    <div class="wrap-input" <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+                    <div class="wrap-input" <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>>
                     <input class="input" type="email" name="email" placeholder="Email" class="form-control" value="<?php echo $email; ?>">
                     <span class="focus-input"></span>
                     </div>
 
                     <span class="help-block"><?php echo $username_err; ?></span> 
-                    <div class="wrap-input" <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                    <div class="wrap-input" <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>>
                     <input class="input" type="text" name="username" placeholder="Username" class="form-control" value="<?php echo $username; ?>">
                     <span class="focus-input"></span>
                     </div>
 
                     <span class="help-block"><?php echo $password_err; ?></span>   
-                    <div class="wrap-input" <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                    <div class="wrap-input" <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>>
                     <input class="input" type="password" name="password" placeholder="Password" class="form-control" value="<?php echo $password; ?>">
                     <span class="focus-input"></span>
                     </div>
 
                     <span class="help-block"><?php echo $confirm_password_err; ?></span>
-                    <div class="wrap-input" <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
+                    <div class="wrap-input" <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>>
                     <input class="input" type="password" name="confirm_password" placeholder="Confirm password" class="form-control" value="<?php echo $confirm_password; ?>">
                     <span class="focus-input"></span>
                     </div>
 
                     <div class="button-container">
                     <button class="button">Sign In</button>
+ 
                     </div>
                     <p class="pstyle">Already have an account? <a href="login.php">Login here.</a></span>
                

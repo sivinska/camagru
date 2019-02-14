@@ -19,7 +19,7 @@ if(isset($_GET['token']))
             {
                 $stmt->bindParam(":username", $_GET['username'], PDO::PARAM_STR);
                 if($stmt->execute()){
-                    header('location: resetpw.php');
+                    header('location: updatePassword.php');
                 }
                 else
                    echo "error";

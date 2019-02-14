@@ -6,11 +6,6 @@ include "nav.php";
 $username = $email = "";
 $username_err = $email_err = "";
 
-/*if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: login.php");
-    exit;
-}*/
-
 function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -44,13 +39,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 			$result = $stmt->fetchAll();
             $param_token = $result[0]['token'];
-            var_dump($param_token);
 
 
 			if($stmt->execute())
 			{
-                echo "i am here";
-                var_dump($stmt);
 				$to      = $email; // Send email to our user
                 $subject = 'Reset your password'; // Give the email a subject 
                 $message = '
@@ -65,12 +57,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 ------------------------
                  
                 Please click this link to activate your account:
-                http://localhost:8080/user/verifypw.php?username='.$username.'&token='.$param_token.'
+                http://localhost:8080/user/checkToken.php?username='.$username.'&token='.$param_token.'
                  
                 '; // Our message above including the link
                                      
                 $headers = 'From:noreply@camagru.com' . "\r\n"; // Set from headers
-                var_dump(mail($to, $subject, $message, $headers)); // Send our email
+                (mail($to, $subject, $message, $headers)); // Send our email
+                $success="Email to reset your password has been sent.";
+                header("Refresh: 3; url=login.php");
 		}
 		else
 		{
@@ -100,6 +94,7 @@ unset($pdo);
 <body>
     <div id="container" class="login">
         <div class="wrap-login">
+        <span class="success"><?php echo $success; ?></span>
             <span class="form-title">Reset your password</span>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 

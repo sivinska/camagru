@@ -21,7 +21,7 @@
       <?php
 		  	if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
               {
-                  echo '<a href="home.php">Camera</a>';
+                  echo '<a href="camera.php">Camera</a>';
               }
             else{
                 echo '';
