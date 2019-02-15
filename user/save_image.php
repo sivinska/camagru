@@ -1,7 +1,11 @@
 <?php
-define('UPLOAD_DIR', 'uploads/');  //Upload folder
-require_once "../config/database.php";
 
+require_once "../config/database.php";
+session_start();
+
+if (isset($_SESSION['loggedin']) && $_SESSION["loggedin"] === true){
+    $profile = $_SESSION['username'];
+}
 
 //get properly base64 image data passed via post in 'cnvimg'
 $cnvimg = trim(strip_tags($_POST['cnvimg']));
@@ -12,13 +16,19 @@ $cnvimg = str_replace(' ', '+', $cnvimg);
 $imgname = trim(strip_tags($_POST['imgname']));
 //get image data from base64 and save it on server
 $data = base64_decode($cnvimg);
-$file = UPLOAD_DIR . mktime() .'.png'; 
+$target_dir = "uploads/".$_SESSION['username']."/";
+if (!file_exists($target_dir))
+        mkdir($target_dir, 0777, true);
+
+$file = $target_dir . mktime() .'.png'; 
 $success = file_put_contents($file, $data);
 
-$sql = "INSERT INTO image_uploads (url) VALUE (:url)";
+$sql = "INSERT INTO images (username, photo) VALUES (:username, :photo)";
 
 if ($stmt = $pdo->prepare($sql)){
-    $stmt->bindParam("url", $file, PDO::PARAM_STR);
+    $stmt->bindParam("username", $_SESSION['username'], PDO::PARAM_STR);
+    $stmt->bindParam("photo", $file, PDO::PARAM_STR);
+
     $stmt->execute();    
 }
 

@@ -6,7 +6,7 @@
       <?php
 		  	if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
         {
-          echo '<a href="#">Your account</a>';
+          echo '<a href="account.php">Your account</a>';
         }
         else{
           echo '<a href="#">Your account</a>

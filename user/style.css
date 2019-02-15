@@ -21,7 +21,7 @@ header {
   .wrapper1 {
     display: grid;
     grid-gap: 20px;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 3fr 1fr;
     grid-template-areas: 
       "header  header"
       "content sidebar"
@@ -42,10 +42,10 @@ header {
       background-color: rgba(255,255,255,0.7);
       width:80%;
       margin-bottom: 20px;
-      margin-top: 170px;
       min-width: 320px;
+      margin-top: 100px;
       padding:15px;
-      max-width:1600px;
+      max-width:1300px;
       border-radius:4px;
   }
   
@@ -138,16 +138,6 @@ header {
       box-sizing: border-box;
   }
   
-  #main {
-      background-color: rgba(255,255,255,0.7);
-      width:80%;
-      margin-bottom: 20px;
-      margin-top: 170px;
-      min-width: 320px;
-      padding:15px;
-      max-width:1600px;
-      border-radius:4px;
-  }
   
   
   
@@ -421,7 +411,7 @@ header {
   #canvas {
       
       z-index: 1;
-      border: 3px solid;
+     
   }
   
   
@@ -444,13 +434,13 @@ header {
   .mask {
       opacity: 0.5;
       border: 3px solid white;
-      border-radius: 20px;
+      
   }
   
   .active, .mask:hover {
       opacity: 1;
       border: 3px solid plum;
-      border-radius: 20px;
+     
   }
   
   #canvas_copy, #canvas_masks {
@@ -474,11 +464,11 @@ header {
   
   #img {
       text-align:center;
-      background-color: #7F7F7F;
-      height: 310px;
+      background-color: #A4A4A4;
+      height: 330px;
       width: 310px;
     margin:10px;
-    border: 1px solid #7F7F7F;
+    border: 1px solid #A4A4A4;
     border-radius: 4px;
     padding:2.5px;  
   }
@@ -487,7 +477,7 @@ header {
       height: 300px;
       width:  300px;
       object-fit: cover;
-    border: 1px solid #7F7F7F;
+    border: 1px solid #A4A4A4;
     border-radius: 4px;
   }
   
@@ -497,7 +487,14 @@ header {
       #main {width:100%}
   }
   
-  
+  .span1{
+    font-weight: bold;
+    justify-content: left;
+    float: left;
+    margin-left: 3px;
+    margin-top: 1px
+      
+  }
   
   
   
@@ -518,18 +515,8 @@ header {
   }
   
   
-  .body {
-      font-family: Arial, sans-serif;
-        background: #ddd;
-    }
-    
-    h1 {
-        text-align: center;
-        font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
-        color: #333;
-        text-shadow: 0 1px 0 #fff;
-        margin: 50px 0;
-    }
+  
+ 
     
     #wrapper {
         width: 100px;
