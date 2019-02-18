@@ -1,7 +1,7 @@
 <?php
-
-session_start();
 require_once "../config/database.php";
+session_start();
+
 include "nav.php";
 $sql = "SELECT * FROM images ORDER BY date DESC";
 if($stmt = $pdo->prepare($sql)){
@@ -35,3 +35,5 @@ if($stmt = $pdo->prepare($sql)){
     </div>
 </body>
 </html>
+
+

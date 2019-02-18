@@ -465,7 +465,7 @@ header {
   #img {
       text-align:center;
       background-color: #A4A4A4;
-      height: 330px;
+      height: 360px;
       width: 310px;
     margin:10px;
     border: 1px solid #A4A4A4;
@@ -473,7 +473,7 @@ header {
     padding:2.5px;  
   }
   
-  #img img {
+  #img .img {
       height: 300px;
       width:  300px;
       object-fit: cover;
@@ -496,7 +496,11 @@ header {
       
   }
   
-  
+  .icon{
+      width:25px;
+      float:left;
+      margin-top:5px;
+  }
   
   
     
