@@ -1,12 +1,12 @@
 <?php
-session_start();
-include "nav.php";
-require_once "../config/database.php";
 
+session_start();
+require_once "../config/database.php";
+include "nav.php";
 
 if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
-    header("location: login.php");
-    exit;
+  header("location: login.php");
+  exit;
 }
 $sql = "SELECT * FROM images WHERE username = :username ORDER BY date DESC";
 
@@ -18,18 +18,38 @@ $sql = "SELECT * FROM images WHERE username = :username ORDER BY date DESC";
 
 
   }
+
 ?>
+
 
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Your account</title>
+  <title>Camera</title>
   <link rel="stylesheet" href="style.css">  
 </head>
+
+
 <body>
-    <div id="container" class="gallery">
-      <div id="main">
+
+<div id="container" class="gallery">  
+<div id="main">
+<div class="wrapper2">
+    <header>Your profile!</header>
+    <aside>
+        <form action="usermail.php" method="post">
+			<button type="submit" class="button">Email and Username</button>
+        </form>
+        <form action="modpw.php" method="post">
+			<button type="submit" class="button">Password</button>
+        </form>
+        <form action="delphoto.php" method="post">
+			<button type="submit" class="button">Photos</button>
+		</form>
+    </aside>
+    <article>
+        <h3> <?php echo $_SESSION['username']; ?> </h3>
         <div id="gallery">
         <?php
             $result = $stmt->fetchAll();
@@ -40,7 +60,4 @@ $sql = "SELECT * FROM images WHERE username = :username ORDER BY date DESC";
             }
         ?>
         </div>
-      </div>       
-    </div>
-</body>
-</html>
+    </article>

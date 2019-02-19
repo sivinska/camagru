@@ -45,14 +45,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 if($stmt->rowCount() == 1){
                     if($row = $stmt->fetchAll()){
                         if ($row[0]['status'] == 'verified'){
-                        $id = $row[0]["id"];
+                        $id = $row[0]["user_id"];
                         $username = $row[0]["username"];
                         $hashed_password = $row[0]["password"];
                         if(password_verify($password, $hashed_password)){
                             session_start();
                             
                             $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
+                            $_SESSION["user_id"] = $id;
                             $_SESSION["username"] = $username;                            
                             
                             header("location: index.php");

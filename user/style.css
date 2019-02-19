@@ -38,6 +38,29 @@ header {
     }
   }
   
+  .wrapper2 {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: 
+      "header  header"
+      "sidebar content"
+      "footer  footer";
+  }
+  @media (max-width: 500px) {
+    .wrapper2 {
+      grid-template-columns: 4fr;
+      grid-template-areas:
+        "header"
+        "content"
+        "sidebar"
+        "footer";
+    }
+  }
+
+
+
+
   #main {
       background-color: rgba(255,255,255,0.7);
       width:80%;
@@ -103,7 +126,7 @@ header {
       overflow: visible;
       touch-action: manipulation;
       text-align: center;
-      cursor: default;
+      cursor: pointer;
       margin-bottom: 5%;
   }
   
@@ -555,3 +578,8 @@ header {
     border-radius: 4px;
   }
   
+  .margin
+  {
+      margin-left:auto;
+      margin-right:auto;
+  }
