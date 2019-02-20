@@ -1,10 +1,18 @@
 <?php
-
-require_once "../config/database.php";
 session_start();
+require_once "../config/database.php";
+
 
 if (isset($_SESSION['loggedin']) && $_SESSION["loggedin"] === true){
-    $profile = $_SESSION['username'];
+    $sql = "SELECT * users WHERE username = :username";
+    if($stmt = $pdo->prepare($sql)){
+        $stmt->bindParam("username", $_SESSION['username'], PDO::PARAM_STR);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        $user_id = $result[0]['user_id'];
+    }
+    
+    
 }
 
 //get properly base64 image data passed via post in 'cnvimg'
@@ -16,17 +24,18 @@ $cnvimg = str_replace(' ', '+', $cnvimg);
 $imgname = trim(strip_tags($_POST['imgname']));
 //get image data from base64 and save it on server
 $data = base64_decode($cnvimg);
-$target_dir = "uploads/".$_SESSION['username']."/";
+$target_dir = "uploads/".$_SESSION['user_id']."/";
 if (!file_exists($target_dir))
         mkdir($target_dir, 0777, true);
 
 $file = $target_dir . mktime() .'.png'; 
 $success = file_put_contents($file, $data);
 
-$sql = "INSERT INTO images (username, photo) VALUES (:username, :photo)";
+$sql = "INSERT INTO images (user_id, username, photo) VALUES (:user_id, :username, :photo)";
 
 if ($stmt = $pdo->prepare($sql)){
     $stmt->bindParam("username", $_SESSION['username'], PDO::PARAM_STR);
+    $stmt->bindParam("user_id", $_SESSION['user_id'], PDO::PARAM_STR);
     $stmt->bindParam("photo", $file, PDO::PARAM_STR);
 
     $stmt->execute();    

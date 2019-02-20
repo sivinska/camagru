@@ -25,7 +25,6 @@ if($stmt = $pdo->prepare($sql)){
             foreach ($result as $pic)
             {
               echo"<div id='img' class='img'>
-              <span class='span1'>".$pic['username']."</span>
               <img src='".$pic['photo']."'>
               </div>";
             }
