@@ -54,13 +54,46 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
             $result = $stmt->fetchAll();
             foreach ($result as $pic)
             {
-              echo"<div id='img' class='img'>
-              <img src='".$pic['photo']."'><span> '" .$pic['photo_id']."'</span>
-              <form action='delphoto.php' method='post'>
-              <button type='submit' name='delete'>Delete</button></form></div>";
+             
+              echo"<form action='delete.php' method='post'><div id='img' class='img'>
+              <img src='".$pic['photo']."'>
+              <button id ='".$pic['photo_id']."'>Delete this image</button></form>
+              </div>";
             }
-
             
+          
         ?>
         </div>
     </article>
+    </body>
+<script>
+var buttons = document.getElementsByTagName("button");
+var buttonsCount = buttons.length;
+for (var i = 0; i < buttonsCount; i++) {
+    buttons[i].onclick = function(e) {
+    
+        var newName = this.id;
+        alert(newName);
+        ajax(newName);        
+    };
+
+  }
+
+function ajax(newName){
+  xhr = new XMLHttpRequest();
+  // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onreadystatechange = function() {
+      if (this.status === 200 && this.readyState == 4 ) {
+         // alert('Something went wrong.  Name is now ' + this.responseText);
+      }
+      // else if (this.status !== 200) {
+      //     alert('Request failed.  Returned status of ' + this.status);
+      // }
+  };
+  xhr.open('GET', `delete.php?name=${newName}&other=toto`, true);
+  // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.send(newName);
+}
+
+</script>
+
