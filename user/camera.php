@@ -8,7 +8,7 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
   exit;
 }
 
-$sql = "SELECT * FROM images WHERE username = :username ORDER BY date DESC LIMIT 7";
+$sql = "SELECT * FROM images WHERE username = :username ORDER BY date DESC";
 
 if($stmt = $pdo->prepare($sql)){
   $stmt->bindParam("username", $_SESSION['username'], PDO::PARAM_STR);
@@ -27,20 +27,20 @@ if($stmt = $pdo->prepare($sql)){
   <meta charset="UTF-8">
   <title>Camera</title>
   <link rel="stylesheet" href="style.css">  
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">  
+
 </head>
 
 
 <body>
 
 <div id="container" class="gallery">  
-<div id="main">
 <div class="wrapper1">
-  <header>Create your image!</header>
   <article>
     <div id="webcam">
            <div><img id="overlay"></div>
-          <video id="video"></video>
-      </div>
+          <div class="crop"><video id="video" ></video></div>
+    </div>
   </article> 
   <aside>
     <div id="choose_masks">
@@ -51,10 +51,8 @@ if($stmt = $pdo->prepare($sql)){
       <div id='img_mask' class='img_mask'><img src="../images/smoketexturepng2.png" class="mask" width="100%"></div>
       <div id='img_mask' class='img_mask'><img src="../images/octogon.png" class="mask" width="100%"></div>
           </div>
-          <div class="button-container">     
-            <button class="button" id="startbutton">Take a pic</button></div>
             <div class="button-container"> 
-            <button action="save_image.php" class="button" id="save">Save it</button>
+            <button action="save_image.php" class="button" id="save" onClick="window.location.reload()" >Save it</button>
           </div>
   </aside>
   <footer>
@@ -63,21 +61,24 @@ if($stmt = $pdo->prepare($sql)){
   </div>
   <br /><br />
  
-      <canvas id="canvas" width="300" height="300"></canvas>
+      <canvas id="canvas"></canvas>
+      <div id="thumbnails">
       <?php
             $result = $stmt->fetchAll();
             foreach ($result as $pic)
             {
               echo"
-              <img src='".$pic['photo']."'>";
+              <img border='3px solid #7F7F7F'  width='200' height='200' src='".$pic['photo']."'>";
             }
         ?>
+        </div>
                  </footer>
             </div>
         </div>
         
         
         <script src="new.js"></script>
+     
        		</div>	
         </div>
 

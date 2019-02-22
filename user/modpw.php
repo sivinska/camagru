@@ -95,6 +95,8 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
   <meta charset="UTF-8">
   <title>Your account</title>
   <link rel="stylesheet" href="style.css">  
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">  
+
 </head>
 
 

@@ -28,6 +28,8 @@ $sql = "SELECT * FROM images WHERE user_id = :user_id ORDER BY date DESC";
   <meta charset="UTF-8">
   <title>Camera</title>
   <link rel="stylesheet" href="style.css">  
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">  
+
 </head>
 
 

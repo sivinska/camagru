@@ -10,15 +10,14 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
 ?>
 
 
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <title>Camera</title>
-  <link rel="stylesheet" href="style.css">  
+  <link rel="stylesheet" href="style.css"> 
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">  
+ 
 </head>
 
 
@@ -67,7 +66,7 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
             </div>
         </div>
         
-        <script src="photo.js"></script>
+        <script src="new.js"></script>
         
         
         		</div>	

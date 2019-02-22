@@ -88,7 +88,9 @@ unset($pdo);
 <head>
   <meta charset="UTF-8">
   <title>Password reset</title>
-  <link rel="stylesheet" href="style.css">  
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">  
+  
 </head>
 
 <body>

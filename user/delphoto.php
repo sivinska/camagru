@@ -9,8 +9,6 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
   exit;
 }
 
-
-
 ?>
 
 
@@ -20,6 +18,8 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
   <meta charset="UTF-8">
   <title>Delete your photos</title>
   <link rel="stylesheet" href="style.css">  
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">  
+
 </head>
 
 
@@ -71,28 +71,20 @@ var buttons = document.getElementsByTagName("button");
 var buttonsCount = buttons.length;
 for (var i = 0; i < buttonsCount; i++) {
     buttons[i].onclick = function(e) {
-    
-        var newName = this.id;
-        alert(newName);
-        ajax(newName);        
+        var photo_id = this.id;
+        ajax(photo_id);        
     };
 
   }
 
-function ajax(newName){
+function ajax(photo_id){
   xhr = new XMLHttpRequest();
-  // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onreadystatechange = function() {
       if (this.status === 200 && this.readyState == 4 ) {
-         // alert('Something went wrong.  Name is now ' + this.responseText);
       }
-      // else if (this.status !== 200) {
-      //     alert('Request failed.  Returned status of ' + this.status);
-      // }
   };
-  xhr.open('GET', `delete.php?name=${newName}&other=toto`, true);
-  // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  xhr.send(newName);
+  xhr.open('GET', `delete.php?name=${photo_id}`, true);
+  xhr.send(photo_id);
 }
 
 </script>

@@ -14,7 +14,8 @@ if($stmt = $pdo->prepare($sql)){
 <head>
   <meta charset="UTF-8">
   <title>Welcome to Camagru</title>
-  <link rel="stylesheet" href="style.css">  
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">  
 </head>
 <body>
     <div id="container" class="gallery">

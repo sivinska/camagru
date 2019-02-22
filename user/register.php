@@ -169,6 +169,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <meta charset="UTF-8">
   <title>Create an account</title>
   <link rel="stylesheet" href="style.css">  
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">  
+
 </head>
 
 <body>
