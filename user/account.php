@@ -36,9 +36,8 @@ $sql = "SELECT * FROM images WHERE user_id = :user_id ORDER BY date DESC";
 <body>
 
 <div id="container" class="gallery">  
-<div id="main">
+
 <div class="wrapper2">
-    <header>Your profile!</header>
     <aside>
         <form action="usermail.php" method="post">
 			<button type="submit" class="button">Email and Username</button>

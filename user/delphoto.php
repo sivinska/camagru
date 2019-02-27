@@ -26,9 +26,7 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
 <body>
 
 <div id="container" class="gallery">  
-<div id="main">
 <div class="wrapper2">
-    <header>Your profile!</header>
     <aside>
         <form action="usermail.php" method="post">
 			<button type="submit" class="button">Email and Username</button>
