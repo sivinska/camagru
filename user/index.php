@@ -1,6 +1,7 @@
 <?php
-require_once "../config/database.php";
 session_start();
+require_once "../config/database.php";
+
 
 include "nav.php";
 $sql = "SELECT * FROM images ORDER BY date DESC";
@@ -25,49 +26,44 @@ if($stmt = $pdo->prepare($sql)){
             $result = $stmt->fetchAll();
             foreach ($result as $pic)
             {
-              echo"
+              ?>
               <div id='img' class='img'>
-              
-              <img id ='".$pic['photo_id']."' src='".$pic['photo']."'> 
-             <div class='modal'>
-
-               <div class='modal-content'>
-                  <span class='close'>&times;</span>
-                  <img src='".$pic['photo']."'> 
-                  
-                </div>
-
-              </div>
-              </div>";
-            }
+              <img src="<?php echo $pic['photo']; ?>">
+               <button onclick="window.location.href='action.php?id=<?php echo $pic['photo_id']; ?>'">
+               Comment</button>
+              </div>  
+            <?php }
         ?>
         </div>
         
       </div>       
     </div>
 
-<script>
+<!--script>
 
+var buttons = document.getElementsByTagName("button");
+var buttonsCount = buttons.length;
+for (var i = 0; i < buttonsCount; i++) {
+    buttons[i].onclick = function(e) {
+        var photo_id = this.id;
+      xhr = new XMLHttpRequest();
 
-var images = document.getElementsByTagName("img");
-var imagesCount = images.length;
-
-for (var i = 0; i < imagesCount; i++) {
-    images[i].onclick = function(e) {
-      this.nextElementSibling.style.display = "block"
+xhr.open('POST', `action.php?name=`);
+xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+xhr.onload = function() {
+    if (xhr.status === 200 && xhr.responseText !== photo_id) {
+        alert('Something went wrong.  Name is now ' + xhr.responseText);
     }
-}
-var modal = document.getElementsByClassName("modal-content");
-var modalCount = modal.length;
+    else if (xhr.status !== 200) {
+        alert('Request failed.  Returned status of ' + xhr.status);
+    }
+};
+xhr.send(encodeURI('name=' + photo_id));
 
-for (var i = 0; i < modalCount; i++) {
-    modal[i].onclick = function(e) {
-      this.parentElement.style.display = "none";
-    }   
-}
-    
+      
+           };
 
-
+  }
 
 
 
@@ -75,7 +71,13 @@ for (var i = 0; i < modalCount; i++) {
 
 
 
-</script>
+
+
+
+
+
+
+</script-->
 
 
 </body>

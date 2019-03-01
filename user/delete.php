@@ -9,6 +9,7 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
 
 $photo_id = $_GET['name'];
 
+
 $sql = "DELETE FROM images WHERE photo_id= :photo_id";
 if ($stmt = $pdo->prepare($sql)){
     $stmt->bindParam("photo_id", $photo_id);

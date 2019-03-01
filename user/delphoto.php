@@ -70,7 +70,7 @@ var buttonsCount = buttons.length;
 for (var i = 0; i < buttonsCount; i++) {
     buttons[i].onclick = function(e) {
         var photo_id = this.id;
-        ajax(photo_id);        
+        (ajax(photo_id));        
     };
 
   }
