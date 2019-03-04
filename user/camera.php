@@ -8,13 +8,7 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
   exit;
 }
 
-$sql = "SELECT * FROM images WHERE username = :username ORDER BY date DESC";
 
-if($stmt = $pdo->prepare($sql)){
-  $stmt->bindParam("username", $_SESSION['username'], PDO::PARAM_STR);
-  $stmt->execute();  
-
-}
 ?>
 
 
@@ -64,12 +58,20 @@ if($stmt = $pdo->prepare($sql)){
       <canvas id="canvas"></canvas>
       <div id="thumbnails">
       <?php
+            $sql = "SELECT * FROM images WHERE user_id = :user_id ORDER BY date DESC";
+
+            if($stmt = $pdo->prepare($sql)){
+              $stmt->bindParam("user_id", $_SESSION['user_id'], PDO::PARAM_STR);
+              $stmt->execute();  
+
+
             $result = $stmt->fetchAll();
             foreach ($result as $pic)
             {
               echo"
               <img border='3px solid #7F7F7F'  width='200' height='200' src='".$pic['photo']."'>";
             }
+          }
         ?>
         </div>
                  </footer>

@@ -2,9 +2,9 @@
 session_start();
 
 require_once "../config/database.php";
+include "nav.php";
 
-
-$photo_id = $_GET['id'];
+$photo_id = test_input($_GET['id']);
 
 
 
@@ -15,29 +15,9 @@ function test_input($data) {
     return $data;
   }
 
-/*$sql = "SELECT * FROM comments WHERE photo_id = :photo_id";
-if($stmt = $pdo->prepare($sql)){
-    $stmt->bindParam("photo_id", $photo_id, PDO::PARAM_STR);
-    $stmt->execute(); 
-    $result = $stmt->fetchAll();
-    foreach ($result as $pic){
-        echo"<div><p>".$pic['username']."</p>
-        </div>
-        <div><p>".$pic['comment']."</p></div>";
-    }
-    }*/
 
-$sql = "SELECT * FROM images WHERE photo_id = :photo_id ";
 
-if($stmt = $pdo->prepare($sql)){
-$stmt->bindParam("photo_id", $photo_id, PDO::PARAM_STR);
-$stmt->execute(); 
-$result = $stmt->fetchAll();
-foreach ($result as $pic){
-    echo"
-  <img src='".$pic['photo']."'>";
-}
-}
+
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty(test_input($_POST["comment"]))){
@@ -62,14 +42,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
 }
-        
-        
+     
 	
 }
-
-
-
-
 
 ?>
 
@@ -77,9 +52,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!DOCTYPE html>
 <html>
 	<head>
+    <title>Comments</title>
+
 		<meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">  
 	</head>
 	<body>
+    <div id="container" class="gallery">
+        <div id="main">
+          <div class="modal-wrap">
+      <article>
+    <?php  $sql = "SELECT * FROM images WHERE photo_id = :photo_id ";
+
+if($stmt = $pdo->prepare($sql)){
+$stmt->bindParam("photo_id", $photo_id, PDO::PARAM_STR);
+$stmt->execute(); 
+$result = $stmt->fetchAll();
+foreach ($result as $pic){
+    echo"
+  <img src='".$pic['photo']."'>";
+}
+}?></article><aside>
+<table class="table">
+
 
     <?php 
 
@@ -89,23 +85,21 @@ $sql = "SELECT * FROM comments WHERE photo_id = :photo_id";
                 $stmt->execute(); 
                 $result = $stmt->fetchAll();
                 foreach ($result as $pic){
-                    echo"<div><p>".$pic['username']."</p>
-                    </div>
-                    <div><p>".$pic['comment']."</p></div>";
+                    echo"<tr>
+                        <th>".$pic['username']."</th>
+                        <td>".$pic['comment']."</td>
+                        </tr>";
                 }
                 }
 
     ?>
-        <form action="action.php?id=<?php echo $pic['photo_id']; ?>"  method="post">
-			<table class="table">
-            
-				<tr></tr>
-				
+    
+        <form action="action.php?id=<?php echo test_input($pic['photo_id']); ?>"  method="post">
 				<tr>
-					<td><b>Comment</b></td>
-					<td></td>
+					<td>Comment</td>
 					<td><input type="comment" name="comment" placeholder="Your comment here." value=""></td>
-					<td><button>Submit</button></td>
+                    <td><button>Submit</button></td>
+
 				</tr>
-			</table>
-		</form>
+			
+		</form></table></aside>

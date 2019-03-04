@@ -112,6 +112,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <p class ="pstyle">Don't have an account? <a href="register.php">Sign up now</a>.</p>
                 <p class ="pstyle">Forgot your password? <a href="forgotPassword.php">Click here</a>.</p>
                 
+                
             </form>
     </div>
 </div>
