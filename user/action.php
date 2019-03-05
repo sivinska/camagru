@@ -4,7 +4,21 @@ session_start();
 require_once "../config/database.php";
 include "nav.php";
 
+if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
+    header("location: login.php");
+    exit;
+  }
+
+
+
 $photo_id = test_input($_GET['id']);
+$sql = "SELECT * FROM users WHERE photo_id = :photo_id";
+    if ($stmt = $pdo->prepare($sql)){
+        $stmt->bindParam(":photo_id", $photo_id, PDO::PARAM_STR);
+        $stmt->execute();
+        $email = $stmt->fetchAll();
+        var_dump($email);
+    }
 
 
 
@@ -18,13 +32,18 @@ function test_input($data) {
 
 
 
-
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty(test_input($_POST["comment"]))){
         $error = "Please enter words.";
     } else{
         $comment = test_input($_POST["comment"]);
     }
+
+    
+
+
+
+
 
     if(empty($error)){
         $sql = "INSERT INTO comments (user_id, username, photo_id, comment) VALUES (:user_id, :username, :photo_id, :comment)";
@@ -34,9 +53,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt->bindParam(":username", $_SESSION['username'], PDO::PARAM_STR);
             $stmt->bindParam(":photo_id", $photo_id, PDO::PARAM_STR);
             $stmt->bindParam(":comment", $comment, PDO::PARAM_STR);
-            $stmt->execute();
+            if($stmt->execute()){
 
-            }
+                
+                $to      = $email; // Send email to our user
+                $subject = 'Notification from Camagru'; // Give the email a subject 
+                $message = '
+                 
+                Someone left a comment on your photo!
+                 
+                Click this link to read the comment:
+                http://localhost:8080/user/action.php?id='.$photo_id.'
+                 
+                '; // Our message above including the link
+                                     
+                $headers = 'From:noreply@camagru.com' . "\r\n"; // Set from headers
+                (mail($to, $subject, $message, $headers));
     
             
 
@@ -45,7 +77,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
      
 	
 }
+    }
 
+}
 ?>
 
 

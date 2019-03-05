@@ -25,5 +25,16 @@ if ($stmt = $pdo->prepare($sql)){
     if($stmt->execute()){
         header ("location: delphoto.php");
         }
+}
+
+
+$sql = "DELETE FROM likes WHERE photo_id= :photo_id";
+if ($stmt = $pdo->prepare($sql)){
+    $stmt->bindParam("photo_id", $photo_id);
+    if($stmt->execute()){
+        header ("location: delphoto.php");
+        }
 }   
+
+
 ?>
