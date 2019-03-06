@@ -115,15 +115,17 @@ header {
   /*---Body---*/
   body {
       margin: 0;
-      font-family: 'Noto Sans KR', sans-serif;
+      font-family: 'Lora', serif;
       font-size: 1rem;
       font-weight: 400;
       line-height: 1.5;
-      color: #212529;
+      color: black;
       margin: 0;
       padding: 0;
       font-size: 14px;
       line-height: 1.6em;
+      font-style:italic;
+      font-weight:bold;
   }
   
   button {
@@ -180,7 +182,6 @@ header {
   
   nav ul {
       text-align: center;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 25%, rgba(255, 255, 255, 0.5) 75%, rgba(255, 255, 255, 0) 100%);
   }
     
   nav ul li {
@@ -191,7 +192,7 @@ header {
   nav ul li a {
       padding: 18px;
       color: rgba(64, 64, 64, 3);
-      font-size: 20px;
+      font-size: 30px;
       text-decoration: none;
       display: block;
   }
@@ -219,11 +220,7 @@ header {
         display:block;
   }
     
-  .nav_row {
-        color: #FFFFFF;
-        border-color: rgba(255,255,255,.3);
-        border-bottom: 1px solid;
-  }
+
   
   .wrapper {
       position: absolute;
@@ -638,30 +635,37 @@ header {
 
 
 
-  .posts-wrapper {
-    width: 50%;
-    margin: 20px auto;
-    border: 1px solid #eee;
+  /* checkbox */
+
+  .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
-  .post {
-    width: 90%;
-    margin: 20px auto;
-    padding: 10px 5px 0px 5px;
-    border: 1px solid green;
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
   }
-  .post-info {
-    margin: 10px auto 0px;
-    padding: 5px;
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
   }
-  .fa {
-    font-size: 1.2em;
-  }
-  .fa-thumbs-down, .fa-thumbs-o-down {
-    transform:rotateY(180deg);
-  }
-  .logged_in_user {
-    padding: 10px 30px 0px;
-  }
-  i {
-    color: blue;
-  }
+  

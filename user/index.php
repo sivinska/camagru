@@ -8,10 +8,7 @@ include "nav.php";
 
 
 
-$sql = "SELECT * FROM images  ORDER BY date DESC";
-if($stmt = $pdo->prepare($sql)){
-  $stmt->execute();  
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -20,16 +17,28 @@ if($stmt = $pdo->prepare($sql)){
   <meta charset="UTF-8">
   <title>Welcome to Camagru</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-</head>
+<link href="https://fonts.googleapis.com/css?family=Lora:400,700i" rel="stylesheet"></head>
 <body>
     <div id="container" class="gallery">
       <div id="main">
         <div id="gallery">
         <?php
+$page = (!empty($_GET['page']) ? $_GET['page'] : 1);       
+$limit = 9;
+$start = ($page - 1) * $limit;
+$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM images ORDER BY date DESC LIMIT $limit OFFSET $start ";
+if($stmt = $pdo->prepare($sql)){
+
+  $stmt->execute();
+  $resultFoundRows = $pdo->query('SELECT found_rows()');
+  /* On doit extraire le nombre du jeu de résultat */
+    $nombredElementsTotal = $resultFoundRows->fetchColumn();
+    $nombreDePages = ceil($nombredElementsTotal / $limit);
+    
+  
+
+
             $result = $stmt->fetchAll();
             foreach ($result as $pic)
             {
@@ -53,10 +62,28 @@ if($stmt = $pdo->prepare($sql)){
              
                
               </div>   
-            <?php }
+            <?php }}
         ?>
         </div>
-        
+<?php
+if ($page > 1):
+      ?><a href="index.php?page=<?php echo $page - 1; ?>">Page précédente</a> — <?php
+  endif;
+  
+  /* On va effectuer une boucle autant de fois que l'on a de pages */
+  for ($i = 1; $i <= $nombreDePages; $i++):
+      ?><a href="index.php?page=<?php echo $i; ?>"><?php echo $i; ?></a> <?php
+  endfor;
+  
+  /* Avec le nombre total de pages, on peut aussi masquer le lien
+   * vers la page suivante quand on est sur la dernière */
+  if ($page < $nombreDePages):
+      ?>— <a href="index.php?page=<?php echo $page + 1; ?>">Page suivante</a><?php
+  endif;
+
+
+
+?>
       </div>       
     </div>
 

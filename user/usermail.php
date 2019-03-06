@@ -167,6 +167,12 @@ if (!empty($email) ){
                     <input class="input" type="text" name="username" placeholder="Modify your username" class="form-control" value="<?php echo $username; ?>">
                     <span class="focus-input"></span>
                     </div>
+                    
+                    <div>Do you wish to receive notfications by mail?</div>
+                    
+
+
+
 
                     <div class="button-container">
                     <button class="button">Submit</button>
@@ -177,5 +183,8 @@ if (!empty($email) ){
      
     </div>
 </article>
+<script>
+
+</script>
 </body>
 </html>

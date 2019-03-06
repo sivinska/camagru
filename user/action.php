@@ -12,12 +12,12 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
 
 
 $photo_id = test_input($_GET['id']);
-$sql = "SELECT * FROM users WHERE photo_id = :photo_id";
+$sql = "SELECT * FROM images INNER JOIN users ON users.user_id = images.user_id WHERE photo_id=:photo_id";
     if ($stmt = $pdo->prepare($sql)){
         $stmt->bindParam(":photo_id", $photo_id, PDO::PARAM_STR);
         $stmt->execute();
-        $email = $stmt->fetchAll();
-        var_dump($email);
+        $result = $stmt->fetchAll();
+        $email = $result[0]['email'];
     }
 
 
