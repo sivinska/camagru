@@ -171,7 +171,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <meta charset="UTF-8">
   <title>Create an account</title>
   <link rel="stylesheet" href="style.css">  
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700i" rel="stylesheet">
 
 </head>
 
@@ -214,6 +214,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                
                 </form>
         </div>
+    </div>
+    <div class="wrapper-foot">
+        sivinska &copy; - Camagru - 2019
     </div>
 </body>
 </html>

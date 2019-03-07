@@ -8,6 +8,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
  
 require_once "../config/database.php";
 include "nav.php";
+
 function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -84,7 +85,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <meta charset="UTF-8">
   <title>Login</title>
   <link rel="stylesheet" href="style.css">  
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700i" rel="stylesheet">
 
 </head>
 
@@ -114,6 +115,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 
                 
             </form>
+    </div>
+    <div class="wrapper-foot">
+        sivinska &copy; - Camagru - 2019
     </div>
 </div>
 </body>

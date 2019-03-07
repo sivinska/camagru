@@ -28,7 +28,7 @@ $sql = "SELECT * FROM images WHERE user_id = :user_id ORDER BY date DESC";
   <meta charset="UTF-8">
   <title>Camera</title>
   <link rel="stylesheet" href="style.css">  
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700i" rel="stylesheet">
 
 </head>
 
@@ -36,18 +36,29 @@ $sql = "SELECT * FROM images WHERE user_id = :user_id ORDER BY date DESC";
 <body>
 
 <div id="container" class="gallery">  
-
+<div id="main">
 <div class="wrapper2">
     <aside>
-        <form action="usermail.php" method="post">
-			<button type="submit" class="button">Email and Username</button>
-        </form>
-        <form action="modpw.php" method="post">
-			<button type="submit" class="button">Password</button>
-        </form>
-        <form action="delphoto.php" method="post">
-			<button type="submit" class="button">Photos</button>
-		</form>
+    <table>
+    <tr class="pointer" onclick="window.location.href='usermail.php'"><td>
+    Email and username
+    </td></tr>
+    <tr class="pointer" onclick="window.location.href='modpw.php'"><td>
+    Password
+    </td></tr>
+    <tr class="pointer" onclick="window.location.href='delphoto.php'"><td>
+    Delete photos
+    </td></tr>
+
+
+
+
+
+
+
+
+    </table>
+        
     </aside>
     <article>
         <h3> <?php echo $_SESSION['username']; ?> </h3>
@@ -62,3 +73,9 @@ $sql = "SELECT * FROM images WHERE user_id = :user_id ORDER BY date DESC";
         ?>
         </div>
     </article>
+
+</div>
+</div>
+<div class="wrapper-foot">
+    sivinska &copy; - Camagru - 2019
+</div>

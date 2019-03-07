@@ -122,7 +122,7 @@ if (!empty($email) ){
   <meta charset="UTF-8">
   <title>Camera</title>
   <link rel="stylesheet" href="style.css"> 
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700i" rel="stylesheet">
  
 </head>
 

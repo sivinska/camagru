@@ -31,15 +31,16 @@ if (!file_exists($target_dir))
 $file = $target_dir . mktime() .'.png'; 
 $success = file_put_contents($file, $data);
 
-$sql = "INSERT INTO images (user_id, username, photo, likes) VALUES (:user_id, :username, :photo, :likes)";
+$sql = "INSERT INTO images (user_id, username, photo, likes, com) VALUES (:user_id, :username, :photo, :likes, :com)";
 
 if ($stmt = $pdo->prepare($sql)){
-    $stmt->bindParam("username", $_SESSION['username'], PDO::PARAM_STR);
-    $stmt->bindParam("user_id", $_SESSION['user_id'], PDO::PARAM_STR);
-    $stmt->bindParam("photo", $file, PDO::PARAM_STR);
-    $stmt->bindParam("likes", $likes , PDO::PARAM_STR);
-
+    $stmt->bindParam(":username", $_SESSION['username'], PDO::PARAM_STR);
+    $stmt->bindParam(":user_id", $_SESSION['user_id'], PDO::PARAM_INT);
+    $stmt->bindParam(":photo", $file, PDO::PARAM_STR);
+    $stmt->bindParam(":likes", $likes , PDO::PARAM_INT);
+    $stmt->bindParam(":com", $com , PDO::PARAM_INT);
     $likes = '0';
+    $com = '0';
     $stmt->execute();    
 }
 

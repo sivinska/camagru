@@ -2,12 +2,7 @@
 session_start();
 require_once "../config/database.php";
 
-
 include "nav.php";
-
-
-
-
 
 ?>
 
@@ -17,57 +12,50 @@ include "nav.php";
   <meta charset="UTF-8">
   <title>Welcome to Camagru</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700i" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
 
-<link href="https://fonts.googleapis.com/css?family=Lora:400,700i" rel="stylesheet"></head>
 <body>
-    <div id="container" class="gallery">
-      <div id="main">
-        <div id="gallery">
+  <div id="container" class="gallery">
+    <div id="main">
+      <div id="gallery">
         <?php
-$page = (!empty($_GET['page']) ? $_GET['page'] : 1);       
-$limit = 9;
-$start = ($page - 1) * $limit;
-$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM images ORDER BY date DESC LIMIT $limit OFFSET $start ";
-if($stmt = $pdo->prepare($sql)){
-
-  $stmt->execute();
-  $resultFoundRows = $pdo->query('SELECT found_rows()');
-  /* On doit extraire le nombre du jeu de résultat */
-    $nombredElementsTotal = $resultFoundRows->fetchColumn();
-    $nombreDePages = ceil($nombredElementsTotal / $limit);
-    
-  
-
-
+          $page = (!empty($_GET['page']) ? $_GET['page'] : 1);       
+          $limit = 9;
+          $start = ($page - 1) * $limit;
+          $sql = "SELECT SQL_CALC_FOUND_ROWS * FROM images ORDER BY date DESC LIMIT $limit OFFSET $start ";
+          if($stmt = $pdo->prepare($sql)){
+            $stmt->execute();
+            $resultFoundRows = $pdo->query('SELECT found_rows()');
+            $nombredElementsTotal = $resultFoundRows->fetchColumn();
+            $nombreDePages = ceil($nombredElementsTotal / $limit);
             $result = $stmt->fetchAll();
             foreach ($result as $pic)
-            {
-              ?>
-              
+            {?>
               <div id='img' class='img'>
               <img src="<?php echo $pic['photo']; ?>">
               <?php if($_SESSION['loggedin']){?>
-                  <img src="../images/clipart2124920.png" width="25px" onclick="window.location.href='action.php?id=<?php echo $pic['photo_id']; ?>'">
-                 <div> <?php echo $pic['likes']; ?>
-                 <img src="../images/clipart882441.png" width="25px" onclick="window.location.href='server.php?id=<?php echo $pic['photo_id']; ?>'">
-                 </div> <?php } 
-                  else{?>
-                    <img src="../images/clipart2124920.png" width="25px" onclick="alert('You have to login first')">
-                    <img src="../images/clipart882441.png" width="25px" onclick="alert('You have to login first')">
-                    <?php
-                    
-                  }
-             
-?>
-             
-               
-              </div>   
-            <?php }}
-        ?>
-        </div>
-<?php
+                <div class="padding" > <?php echo $pic['likes']; ?>
+                <i class="far fa-heart fa-2x" onclick="window.location.href='server.php?id=<?php echo $pic['photo_id']; ?>'"></i>
+                <?php echo $pic['com']; ?>
+                <i class="far fa-comments fa-2x" onclick="window.location.href='comments.php?id=<?php echo $pic['photo_id']; ?>'"></i>
+              </div>
+              <?php } 
+                else{ ?>
+                <div class="padding"> <?php echo $pic['likes']; ?>
+                <i class="far fa-heart fa-2x" onclick="alert('You have to login first')"></i>
+                <?php echo $pic['com']; ?>
+                <i class="far fa-comments fa-2x" onclick="alert('You have to login first')"></i>
+                </div>
+              <?php } ?>
+      </div>   
+            <?php }} ?>
+    </div>
+<div class="center"><?php
+
 if ($page > 1):
-      ?><a href="index.php?page=<?php echo $page - 1; ?>">Page précédente</a> — <?php
+      ?><a href="index.php?page=<?php echo $page - 1; ?>">Previous page</a> — <?php
   endif;
   
   /* On va effectuer une boucle autant de fois que l'on a de pages */
@@ -78,13 +66,16 @@ if ($page > 1):
   /* Avec le nombre total de pages, on peut aussi masquer le lien
    * vers la page suivante quand on est sur la dernière */
   if ($page < $nombreDePages):
-      ?>— <a href="index.php?page=<?php echo $page + 1; ?>">Page suivante</a><?php
+      ?>— <a href="index.php?page=<?php echo $page + 1; ?>">Next page</a><?php
   endif;
 
 
 
-?>
-      </div>       
+?></div>
+      </div>  
+      <div class="wrapper-foot">
+          sivinska &copy; - Camagru - 2019
+</div>
     </div>
 
 

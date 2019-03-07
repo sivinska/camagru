@@ -18,7 +18,7 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
   <meta charset="UTF-8">
   <title>Delete your photos</title>
   <link rel="stylesheet" href="style.css">  
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700i" rel="stylesheet">
 
 </head>
 

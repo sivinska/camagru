@@ -1,4 +1,4 @@
-<div class="wrapper nav_row">
+<div class="wrapper">
   <nav>
     <ul>
       <li><a href="index.php">Gallery</a></li>
@@ -42,3 +42,5 @@
     </ul>
   </nav>
 </div>
+
+

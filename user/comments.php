@@ -7,10 +7,15 @@ include "nav.php";
 if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
     header("location: login.php");
     exit;
+}
+
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
   }
-
-
-
+  
 $photo_id = test_input($_GET['id']);
 $sql = "SELECT * FROM images INNER JOIN users ON users.user_id = images.user_id WHERE photo_id=:photo_id";
     if ($stmt = $pdo->prepare($sql)){
@@ -19,31 +24,12 @@ $sql = "SELECT * FROM images INNER JOIN users ON users.user_id = images.user_id 
         $result = $stmt->fetchAll();
         $email = $result[0]['email'];
     }
-
-
-
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-  }
-
-
-
-
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty(test_input($_POST["comment"]))){
         $error = "Please enter words.";
     } else{
         $comment = test_input($_POST["comment"]);
     }
-
-    
-
-
-
-
 
     if(empty($error)){
         $sql = "INSERT INTO comments (user_id, username, photo_id, comment) VALUES (:user_id, :username, :photo_id, :comment)";
@@ -69,16 +55,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                      
                 $headers = 'From:noreply@camagru.com' . "\r\n"; // Set from headers
                 (mail($to, $subject, $message, $headers));
-    
-            
 
-
-}
-     
-	
-}
+                $sql = "UPDATE images SET com = com + 1 WHERE photo_id = :photo_id";
+                if ($stmt = $pdo->prepare($sql)){
+                    $stmt->bindParam(":photo_id", $photo_id);
+                    $stmt->execute();
+                }
+            }
+        }
     }
-
 }
 ?>
 
@@ -90,7 +75,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 		<meta charset="utf-8">
         <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">  
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700i" rel="stylesheet">
 	</head>
 	<body>
     <div id="container" class="gallery">
