@@ -28,16 +28,17 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
 
 <body>
 
-<div id="container" class="gallery">  
+<div id="container" class="gallery"> 
+  <div id="main"> 
 <div class="wrapper1">
-  <article>
+  <aside>
     <div id="webcam">
-           <div><img id="overlay"></div>
+           <div><img src="../images/circlestreak.png" id="overlay"></div>
           <div class="crop"><video id="video" ></video></div>
     </div>
-  </article> 
-  <aside>
-    <div id="choose_masks">
+  </aside> 
+  <article>
+    <div id="choose_masks" class="top">
       <div id='img_mask' class='img_mask'><img src="../images/arrow1080x.png" class="mask active" width="100%"></div>
       <div id='img_mask' class='img_mask'><img src="../images/wolfoverlay.png" class="mask" width="100%"></div>
       <div id='img_mask' class='img_mask'><img src="../images/trianglepaintswash.png" class="mask" width="100%"></div>
@@ -48,10 +49,10 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
             <div class="button-container"> 
             <button action="save_image.php" class="button" id="save" onClick="window.location.reload()" >Save it</button>
           </div>
-  </aside>
+</article>
   <footer>
   <div>
-  <p class="pstyle">Don't have a camera? What to upload an image from your library? <a href="nocamera.php">Click here.</a></span>
+  <p class="pstyle">Don't have a camera? Want to upload an image from your library? <a href="nocamera.php">Click here.</a></span>
   </div>
   <br /><br />
  
