@@ -1,8 +1,7 @@
 (function() {
     var streaming = false,
         video = document.querySelector('#video'),
-        canvas = document.querySelector('#canvas'),
-        startbutton = document.querySelector('#startbutton');
+        canvas = document.querySelector('#canvas');
 
     navigator.mediaDevices.getUserMedia({ audio: false, video: { width: 600, height: 600 } }).then(mediaStream => {
             video.srcObject = mediaStream
@@ -52,13 +51,9 @@
     }
 
     save.addEventListener('click', function(ev) {
-        var current_mask = maskSelector();
-        document.getElementsByClassName('mask').value = current_mask.src;
-        if (current_mask.src == '')
-            alert('You need to select a mask beofre taking a picture');
-        else {
-            takepicture();
-        }
+
+
+        takepicture();
 
         ev.preventDefault();
     }, false);
@@ -90,13 +85,7 @@ function ajaxSend(data, php, via, callback) {
 
 var btn_cnvimg = document.getElementById('save');
 btn_cnvimg.addEventListener('click', function(e) {
-    // let imgname = Math.random().toString(36).substring(7);
-
-    //if(imgname !== null){
-    //set data that will be send with ajaxSend() to php (base64 PNG image-data of the canvas, and image-name)
     var img_data = { 'cnvimg': cnv.toDataURL('image/png', 1.0) };
-
-    //send image-data to php file
     ajaxSend(img_data, php_file, 'post', function(resp) {});
 });
 //});

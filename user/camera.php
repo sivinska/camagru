@@ -39,10 +39,10 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
   </aside> 
   <article>
     <div id="choose_masks" class="top">
-      <div id='img_mask' class='img_mask'><img src="../images/arrow1080x.png" class="mask active" width="100%"></div>
+      <div id='img_mask' class='img_mask'><img src="../images/arrow1080x.png" class="mask" width="100%"></div>
       <div id='img_mask' class='img_mask'><img src="../images/wolfoverlay.png" class="mask" width="100%"></div>
       <div id='img_mask' class='img_mask'><img src="../images/trianglepaintswash.png" class="mask" width="100%"></div>
-      <div id='img_mask' class='img_mask'><img src="../images/circlestreak.png" class="mask" width="100%"></div>
+      <div id='img_mask' class='img_mask'><img src="../images/circlestreak.png" class="mask active" width="100%"></div>
       <div id='img_mask' class='img_mask'><img src="../images/smoketexturepng2.png" class="mask" width="100%"></div>
       <div id='img_mask' class='img_mask'><img src="../images/octogon.png" class="mask" width="100%"></div>
           </div>
@@ -52,7 +52,7 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
 </article>
   <footer>
   <div>
-  <p class="pstyle">Don't have a camera? Want to upload an image from your library? <a href="nocamera.php">Click here.</a></span>
+  <p class="pstyle">Don't have a camera? <a href="nocamera.php">Click here.</a></span>
   </div>
   <br /><br />
  

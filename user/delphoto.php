@@ -25,7 +25,7 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
     <div id="main">
         <div class="wrapper2">
             <aside>
-                <table>
+                <table class="table">
                     <tr class="pointer" onclick="window.location.href='usermail.php'"><td>
                     Modify your email and username
                     </td></tr>

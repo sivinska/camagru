@@ -9,10 +9,12 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
     exit;
 }
 
+
 function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
+    
     return $data;
   }
   
@@ -23,6 +25,7 @@ $sql = "SELECT * FROM images INNER JOIN users ON users.user_id = images.user_id 
         $stmt->execute();
         $result = $stmt->fetchAll();
         $email = $result[0]['email'];
+        $notif = $result[0]['notification'];
     }
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty(test_input($_POST["comment"]))){
@@ -41,7 +44,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt->bindParam(":comment", $comment, PDO::PARAM_STR);
             if($stmt->execute()){
 
-                
+                if ($notif === "yes"){
                 $to      = $email; // Send email to our user
                 $subject = 'Notification from Camagru'; // Give the email a subject 
                 $message = '
@@ -54,13 +57,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 '; // Our message above including the link
                                      
                 $headers = 'From:noreply@camagru.com' . "\r\n"; // Set from headers
-                (mail($to, $subject, $message, $headers));
+                (mail($to, $subject, $message, $headers));}
+
 
                 $sql = "UPDATE images SET com = com + 1 WHERE photo_id = :photo_id";
                 if ($stmt = $pdo->prepare($sql)){
                     $stmt->bindParam(":photo_id", $photo_id);
                     $stmt->execute();
                 }
+            
             }
         }
     }
@@ -90,10 +95,10 @@ $stmt->execute();
 $result = $stmt->fetchAll();
 foreach ($result as $pic){
     echo"
-  <img src='".$pic['photo']."'>";
+  <div id='img'><img class='img' src='".$pic['photo']."'></div>";
 }
 }?></article><aside>
-<table class="table">
+<table class="table1">
 
 
     <?php 
@@ -112,13 +117,21 @@ $sql = "SELECT * FROM comments WHERE photo_id = :photo_id";
                 }
 
     ?>
-    
-        <form action="action.php?id=<?php echo test_input($pic['photo_id']); ?>"  method="post">
+    <tr></tr>
+    <tr></tr>
+    <tr></tr>
+    <tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+        <form action="comments.php?id=<?php echo test_input($pic['photo_id']); ?>"  method="post">
 				<tr>
-					<td>Comment</td>
-					<td><input type="comment" name="comment" placeholder="Your comment here." value=""></td>
-                    <td><button>Submit</button></td>
-
+					<td class="style">COMMENT</td>
+					<td><input class="input_com" type="comment" name="comment" placeholder="Your comment here." value=""></td>
+                    <td><button class="btn1">Submit</button></td>
 				</tr>
 			
-		</form></table></aside>
+        </form></table></aside>
+
+</div>
+            </div>
+<div class="wrapper-foot">
+        sivinska &copy; - Camagru - 2019
+    </div>

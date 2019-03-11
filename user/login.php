@@ -104,6 +104,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="help-block"><?php echo $password_err; ?></span>   
                 <div class="wrap-input" <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                 <input class="input" type="password" name="password" placeholder="Password" class="form-control" value="<?php echo $password; ?>">
+
                 <span class="focus-input"></span>
                 </div>
             

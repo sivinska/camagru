@@ -31,7 +31,7 @@ $sql = "SELECT * FROM images WHERE user_id = :user_id ORDER BY date DESC";
   <div id="main">
     <div class="wrapper2">
       <aside>
-        <table>
+        <table class="table">
           <tr class="pointer" onclick="window.location.href='usermail.php'"><td>
           Modify your email and username
           </td></tr>

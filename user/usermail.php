@@ -19,7 +19,7 @@ function test_input($data) {
     return $data;
   }
 
-$query = "SELECT username, email, password FROM users WHERE user_id = :user_id";
+$query = "SELECT * FROM users WHERE user_id = :user_id";
 if ($stmt = $pdo->prepare($query)){
     $stmt->bindParam("user_id", $_SESSION['user_id'], PDO::PARAM_STR);
     $stmt->execute();
@@ -99,7 +99,7 @@ if (!empty($email) ){
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Camera</title>
+  <title>Your profile</title>
   <link rel="stylesheet" href="style.css"> 
   <link href="https://fonts.googleapis.com/css?family=Lora:400,700i" rel="stylesheet">
 </head>
@@ -108,7 +108,7 @@ if (!empty($email) ){
     <div id="main">
         <div class="wrapper2">
             <aside>
-                <table>
+                <table class="table">
                     <tr class="pointer" onclick="window.location.href='usermail.php'"><td>
                     Modify your email and username
                     </td></tr>
@@ -135,7 +135,13 @@ if (!empty($email) ){
                         <input class="input" type="text" name="username" placeholder="Modify your username" class="form-control" value="<?php echo $username; ?>">
                         <span class="focus-input"></span>
                         </div>
-                        <div>Do you wish to receive notfications by mail?</div>
+                        <div>
+                            Do you wish to recieve notification by mail?
+                        <label class="container">Yes
+                        <input class="checkbox" type="checkbox" <?php if ($result[0]['notification'] === 'yes') { echo 'checked="checked"'; } ?> name="notif" onclick="window.location.href='notif.php'">
+                            <span class="checkmark"></span>
+                        </label>
+                        </div>
                         <div class="button-container">
                         <button class="button">Submit</button>
                         </div>
@@ -148,5 +154,6 @@ if (!empty($email) ){
 <div class="wrapper-foot">
     sivinska &copy; - Camagru - 2019
 </div>
+
 </body>
 </html>
