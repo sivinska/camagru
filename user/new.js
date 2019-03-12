@@ -7,11 +7,14 @@
             video.srcObject = mediaStream
             video.onloadedmetadata = function(e) {
                 video.play();
+                var but = document.getElementById("save");
+                but.style.display = "block";
             };
         },
         function(err) {
             console.log("An error occured! " + err);
         });
+
 
     var overlay_image = document.getElementById("overlay");
     var header = document.getElementById("choose_masks");

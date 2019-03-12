@@ -79,8 +79,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate password
     if(empty(test_input($_POST["password"]))){
         $password_err = "Please enter a password.";     
-    } elseif(strlen(test_input($_POST["password"])) < 6){
-        $password_err = "Password must have atleast 6 characters.";
+    
     } else{
         $password = test_input($_POST["password"]);
     }
@@ -196,7 +195,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                     <span class="help-block"><?php echo $password_err; ?></span>   
                     <div class="wrap-input" <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>>
-                    <input class="input" type="password" name="password" placeholder="Password" class="form-control" value="<?php echo $password; ?>">
+                    <input class="input" type="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required
+                    class="form-control" value="<?php echo $password; ?>">
                     <span class="focus-input"></span>
                     </div>
 

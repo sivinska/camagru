@@ -36,7 +36,7 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
       </div>
       <div class="upload">
             <form method="post" enctype="multipart/form-data">
-            <input type="file" id="imageLoader" name="files[]"/>
+            <input type="file" id="imageLoader" accept="image/*" name="files[]"/>
             </form>
 </div>
 
@@ -51,7 +51,7 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
       <div id='img_mask' class='img_mask'><img src="../images/octogon.png" class="mask" width="100%"></div>
           </div>
             <div class="button-container"> 
-            <button action="save_image.php" class="button" id="save" onClick="window.location.reload()" >Save it</button>
+            <button action="save_image.php" class="button" style="display:none;" id="save" onClick="window.location.reload()" >Save it</button>
           </div>
 </article>
   <footer>
@@ -84,9 +84,16 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
                  
             </div>
         </div>
+        <div class="wrapper-foot">
+        sivinska &copy; - Camagru - 2019
+    </div>
+        
+        <script src="photo.js">
         
         
-        <script src="photo.js"></script>
+
+        
+        </script>
         
         		</div>	
         </div>

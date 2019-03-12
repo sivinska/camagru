@@ -47,7 +47,7 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
       <div id='img_mask' class='img_mask'><img src="../images/octogon.png" class="mask" width="100%"></div>
           </div>
             <div class="button-container"> 
-            <button action="save_image.php" class="button" id="save" onClick="window.location.reload()" >Save it</button>
+            <button action="save_image.php" class="button" style="display:none;" id="save" onClick="window.location.reload()" >Save it</button>
           </div>
 </article>
   <footer>
@@ -79,7 +79,9 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
             </div>
         </div>
         
-        
+        <div class="wrapper-foot">
+        sivinska &copy; - Camagru - 2019
+    </div>
         <script src="new.js"></script>
      
        		</div>	

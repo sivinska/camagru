@@ -1,5 +1,5 @@
 var imageLoader = document.getElementById('imageLoader');
-imageLoader.addEventListener('change', handleImage, false);
+imageLoader.addEventListener('change', handleImage);
 var canvas = document.getElementById('canvas_img');
 var ctx = canvas.getContext('2d');
 
@@ -12,10 +12,13 @@ function handleImage(e) {
             canvas.width = img.width;
             canvas.height = img.height;
             ctx.drawImage(img, 0, 0);
+
         }
         img.src = event.target.result;
+        document.getElementById("save").style.display = "block";
     }
     reader.readAsDataURL(e.target.files[0]);
+
 }
 
 
@@ -51,7 +54,11 @@ function handleImage(e) {
     }
 
 
-
+    var pic = document.getElementById('canvas_img');
+    pic.onload = function() {
+        var but = document.getElementById("save");
+        but.style.display = "block";
+    }
 
     function takepicture() {
 

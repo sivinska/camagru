@@ -64,6 +64,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 $headers = 'From:noreply@camagru.com' . "\r\n"; // Set from headers
                 (mail($to, $subject, $message, $headers)); // Send our email
                 $success="Email to reset your password has been sent.";
+                /*$sql = "UPDATE users SET token = :token WHERE username =:username AND email = :email";
+                if ($stmt = $pdo->prepare($sql)){
+                    $stmt->bindParam(":token", $token, PDO::PARAM_STR);
+                    $stmt->bindParam(":username", $username, PDO::PARAM_STR);
+                    $stmt->bindParam(":email", $email, PDO::PARAM_STR);
+                    $token = md5( rand(0,1000) );
+                    $stmt->execute();    
+
+                }*/
                 header("Refresh: 3; url=login.php");
 		}
 		else

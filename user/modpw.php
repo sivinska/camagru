@@ -28,8 +28,6 @@ if ($_SESSION["loggedin"] && $_SERVER["REQUEST_METHOD"] == "POST")
 
     if(empty(test_input($_POST["newpw"])))
         $newpw_err = "Please enter a password.";
-    elseif(strlen(test_input($_POST["newpw"])) < 6)
-        $newpw_err = "Password must have atleast 6 characters.";
     else
         $newpw = test_input($_POST["newpw"]);
 
@@ -108,7 +106,8 @@ if ($_SESSION["loggedin"] && $_SERVER["REQUEST_METHOD"] == "POST")
 
                             <span class="help-block"><?php echo $newpw_err; ?></span> 
                             <div class="wrap-input" <?php echo (!empty($newpw_err)) ? 'has-error' : ''; ?>>
-                            <input class="input" type="password" name="newpw" placeholder="New password" class="form-control" value="<?php echo $newpw; ?>">
+                            <input class="input" type="password" name="newpw" placeholder="New password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required
+                            class="form-control" value="<?php echo $newpw; ?>">
                             <span class="focus-input"></span>
                             </div>
 
