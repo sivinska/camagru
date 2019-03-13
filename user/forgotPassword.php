@@ -3,6 +3,14 @@ session_start();
 require_once "../config/database.php";
 include "nav.php";
 
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    header("location: index.php");
+    exit;
+  }
+
+
+
+
 $username = $email = "";
 $username_err = $email_err = "";
 
@@ -47,8 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 $subject = 'Reset your password'; // Give the email a subject 
                 $message = '
                  
-                Thanks for signing up!
-                Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
+                You have forgotten your password.
                  
                 ------------------------
 
@@ -56,8 +63,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 
                 ------------------------
                  
-                Please click this link to activate your account:
-                http://localhost:8080/user/checkToken.php?username='.$username.'&token='.$param_token.'
+                Please click this link to reset your password:
+                http://localhost:8080/user/updatePassword.php?username='.$username.'&token='.$param_token.'
                  
                 '; // Our message above including the link
                                      

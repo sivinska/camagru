@@ -3,6 +3,7 @@ session_start();
 
 require_once "../config/database.php";
 include "nav.php";
+include "helper.php";
 
 if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
     header("location: login.php");

@@ -1,7 +1,14 @@
 <?php
-// Include config file
+session_start();
 require_once "../config/database.php";
 include "nav.php";
+
+
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    header("location: index.php");
+    exit;
+  }
+
 function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);

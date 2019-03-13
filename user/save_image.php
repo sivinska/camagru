@@ -16,6 +16,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION["loggedin"] === true){
 }
 
 //get properly base64 image data passed via post in 'cnvimg'
+if ($cnvimg === '')
+    exit;
 $cnvimg = trim(strip_tags($_POST['cnvimg']));
 $cnvimg = str_replace('data:image/png;base64,', '', $cnvimg);
 $cnvimg = str_replace(' ', '+', $cnvimg);

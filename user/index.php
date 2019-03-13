@@ -1,10 +1,14 @@
 <?php
 session_start();
-require_once "../config/database.php";
-
+include_once "../config/database.php";
 include "nav.php";
 
+
 ?>
+
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -18,9 +22,19 @@ include "nav.php";
 
 <body>
   <div id="container" class="gallery">
-    <div id="main">
-      <div id="gallery">
+  <?php
+        if (!$pdo){
+          ?>
+          <div class="install"> 
+          <p>To install the database <a href="../config/setup.php">click here.</a></p>
+          </div>
         <?php
+        }
+        else { ?>
+    <div id="main">
+    
+      <div id="gallery">
+        <?php 
           $page = (!empty($_GET['page']) ? $_GET['page'] : 1);       
           $limit = 9;
           $start = ($page - 1) * $limit;
@@ -37,7 +51,7 @@ include "nav.php";
               <img src="<?php echo $pic['photo']; ?>">
               <?php if($_SESSION['loggedin']){?>
                 <div class="padding" > <?php echo $pic['likes']; ?>
-                <i class="far fa-heart fa-2x" onclick="window.location.href='server.php?id=<?php echo $pic['photo_id']; ?>'"></i>
+                <i class="far fa-heart fa-2x" onclick="window.location.href='likes.php?id=<?php echo $pic['photo_id']; ?>'"></i>
                 <?php echo $pic['com']; ?>
                 <i class="far fa-comments fa-2x" onclick="window.location.href='comments.php?id=<?php echo $pic['photo_id']; ?>'"></i>
               </div>
@@ -58,13 +72,10 @@ if ($page > 1):
       ?><a href="index.php?page=<?php echo $page - 1; ?>">Previous page</a> — <?php
   endif;
   
-  /* On va effectuer une boucle autant de fois que l'on a de pages */
   for ($i = 1; $i <= $nombreDePages; $i++):
       ?><a href="index.php?page=<?php echo $i; ?>"><?php echo $i; ?></a> <?php
   endfor;
   
-  /* Avec le nombre total de pages, on peut aussi masquer le lien
-   * vers la page suivante quand on est sur la dernière */
   if ($page < $nombreDePages):
       ?>— <a href="index.php?page=<?php echo $page + 1; ?>">Next page</a><?php
   endif;
@@ -89,4 +100,6 @@ if ($page > 1):
 
 </html>
 
-
+<?php
+}
+?>

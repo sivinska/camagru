@@ -59,6 +59,14 @@ footer {
     grid-template-areas: "content sidebar"
 }
 
+@media (max-width:750px) {
+    .modal-wrap {
+        min-width: 400px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "content" "sidebar"
+    }
+}
+
 #main {
     background-color: rgba(255, 255, 255, 0.25);
     margin-top: 100px;
@@ -903,4 +911,9 @@ div a {
     margin-left: 5px;
     margin-right: 5px;
     border-radius: 5px;
+}
+
+.install {
+    margin-top: 100px;
+    font-size: 20px;
 }
