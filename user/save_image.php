@@ -2,7 +2,6 @@
 session_start();
 require_once "../config/database.php";
 
-
 if (isset($_SESSION['loggedin']) && $_SESSION["loggedin"] === true){
     $sql = "SELECT * users WHERE username = :username";
     if($stmt = $pdo->prepare($sql)){
@@ -16,22 +15,42 @@ if (isset($_SESSION['loggedin']) && $_SESSION["loggedin"] === true){
 }
 
 //get properly base64 image data passed via post in 'cnvimg'
-if ($cnvimg === '')
-    exit;
-$cnvimg = trim(strip_tags($_POST['cnvimg']));
+
+$cnvimg = $_POST['cnvimg'];
+$mask = $_POST['mask'];
+
 $cnvimg = str_replace('data:image/png;base64,', '', $cnvimg);
 $cnvimg = str_replace(' ', '+', $cnvimg);
-
-//set image name from 'imgname', or unique name set with uniqid()
-$imgname = trim(strip_tags($_POST['imgname']));
-//get image data from base64 and save it on server
 $data = base64_decode($cnvimg);
 $target_dir = "uploads/".$_SESSION['user_id']."/";
 if (!file_exists($target_dir))
         mkdir($target_dir, 0777, true);
 
 $file = $target_dir . mktime() .'.png'; 
-$success = file_put_contents($file, $data);
+file_put_contents($file, $data);
+
+
+           
+            
+           
+$imgcpy = imagecreatefrompng($file);
+$maskcpy = imagecreatefrompng($mask);
+
+$resized_mask = imagecreatetruecolor(300, 300);
+imagealphablending($resized_mask, false);
+
+imagealphablending($maskcpy, true);
+imagesavealpha($maskcpy, true);
+$src_x = imagesx($maskcpy);
+$src_y = imagesy($maskcpy);
+imagecopyresized($resized_mask, $maskcpy, 0, 0, 0, 0, 300, 300, $src_x, $src_y);
+imagecopy($imgcpy, $resized_mask, 0, 0, 0, 0, $src_x, $src_y);
+imagepng($imgcpy, $file);
+
+
+
+
+
 
 $sql = "INSERT INTO images (user_id, username, photo, likes, com) VALUES (:user_id, :username, :photo, :likes, :com)";
 

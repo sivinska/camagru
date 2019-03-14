@@ -42,15 +42,19 @@
             video.setAttribute('height', 600);
             canvas.setAttribute('width', 300);
             canvas.setAttribute('height', 300);
+
             streaming = true;
         }
     }, false);
 
     function takepicture() {
         var current_mask = maskSelector();
-        document.getElementsByClassName('mask').value = current_mask.src;
+        var image = document.getElementById("copy");
+        document.getElementById('mask').value = current_mask.src;
+        document.getElementById("snapshot").value = image.toDataURL();
         canvas.getContext('2d').drawImage(video, 0, 0, 300, 300);
         canvas.getContext('2d').drawImage(current_mask, 0, 0, 300, 300);
+        image.getContext('2d').drawImage(video, 0, 0, 300, 300);
     }
 
     save.addEventListener('click', function(ev) {
@@ -64,9 +68,17 @@
 })();
 
 
-
-var cnv = document.getElementById('canvas');
 var php_file = 'save_image.php';
+var save_image = document.getElementById('copy');
+
+function maskSelector() {
+    var header = document.getElementById("choose_masks");
+    var selected_mask = header.getElementsByClassName("active");
+    return selected_mask[0];
+}
+var save_mask = maskSelector();
+var mask = document.getElementById('mask').value;
+
 
 function ajaxSend(data, php, via, callback) {
     var ob_ajax = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
@@ -88,7 +100,14 @@ function ajaxSend(data, php, via, callback) {
 
 var btn_cnvimg = document.getElementById('save');
 btn_cnvimg.addEventListener('click', function(e) {
-    var img_data = { 'cnvimg': cnv.toDataURL('image/png', 1.0) };
-    ajaxSend(img_data, php_file, 'post', function(resp) {});
+    mask = document.getElementById('mask').value;
+    var img_data = {
+        'cnvimg': save_image.toDataURL('image/png', 1.0),
+        'mask': mask,
+    };
+    console.log(img_data);
+    ajaxSend(img_data, php_file, 'post', function(resp) {
+        console.log(JSON.stringify(resp));
+    });
 });
 //});
