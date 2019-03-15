@@ -15,7 +15,7 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
 <head>
   <meta charset="UTF-8">
   <title>Camera</title>
-  <link rel="stylesheet" href="style.css"> 
+  <link rel="stylesheet" href="../style/style.css">  
   <link href="https://fonts.googleapis.com/css?family=Lora:400,700i" rel="stylesheet">
  
 </head>
@@ -50,9 +50,14 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
       <div id='img_mask' class='img_mask'><img src="../images/smoketexturepng2.png" class="mask" width="100%"></div>
       <div id='img_mask' class='img_mask'><img src="../images/octogon.png" class="mask" width="100%"></div>
           </div>
+          <canvas id="canvas" width="300" height="300" ></canvas>
+          <form method="post" action="">
+            <input id="snapshot" name="snap" type="hidden"  value="">
+            <input id="mask" name="mask" type="hidden" value="">
             <div class="button-container"> 
-            <button action="save_image.php" class="button" style="display:none;" id="save" onClick="window.location.reload()" >Save it</button>
+            <button class="button" style="display:none;" id="save"  onClick="window.location.reload()" >Save it</button>
           </div>
+          </form>
 </article>
   <footer>
 
@@ -60,7 +65,7 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
            
 
 
-                <canvas id="canvas" width="300" height="300"></canvas>
+               <canvas id="copy" width="300" height="300"></canvas>
                 <div id="thumbnails">
       <?php
             $sql = "SELECT * FROM images WHERE user_id = :user_id ORDER BY date DESC";
@@ -88,7 +93,7 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
         sivinska &copy; - Camagru - 2019
     </div>
         
-        <script src="photo.js">
+        <script src="../style/upload.js">
         
         
 

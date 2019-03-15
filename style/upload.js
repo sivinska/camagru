@@ -64,10 +64,12 @@ function handleImage(e) {
 
         var current_mask = maskSelector();
         var uploaded_img = document.getElementById('canvas_img');
-        document.getElementsByClassName('mask').value = current_mask.src;
+        var image = document.getElementById("copy");
+        document.getElementById('mask').value = current_mask.src;
+        document.getElementById("snapshot").value = image.toDataURL();
         canvas.getContext('2d').drawImage(uploaded_img, 0, 0, 305, 305);
         canvas.getContext('2d').drawImage(current_mask, 0, 0, 300, 300);
-
+        image.getContext('2d').drawImage(uploaded_img, 0, 0, 300, 300);
 
     }
 
@@ -79,20 +81,21 @@ function handleImage(e) {
 })();
 
 
-var cnv = document.getElementById('canvas'); //Replace 'cnv1' with your canvas ID
-var php_file = 'save_image.php'; //address of php file that get and save image on server
+var php_file = 'save_image.php';
+var save_image = document.getElementById('copy');
 
-/* Ajax Function
- Send "data" to "php", using the method added to "via", and pass response to "callback" function
- data - object with data to send, name:value; ex.: {"name1":"val1", "name2":"2"}
- php - address of the php file where data is send
- via - request method, a string: 'post', or 'get'
- callback - function called to proccess the server response
-*/
+function maskSelector() {
+    var header = document.getElementById("choose_masks");
+    var selected_mask = header.getElementsByClassName("active");
+    return selected_mask[0];
+}
+var save_mask = maskSelector();
+var mask = document.getElementById('mask').value;
+
+
 function ajaxSend(data, php, via, callback) {
-    var ob_ajax = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP'); //XMLHttpRequest object
+    var ob_ajax = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
 
-    //put data from 'data' into a string to be send to 'php'
     var str_data = '';
     for (var k in data) {
         str_data += k + '=' + data[k].replace(/\?/g, '?').replace(/=/g, '=').replace(/&/g, '&').replace(/[ ]+/g, ' ') + '&'
@@ -101,25 +104,22 @@ function ajaxSend(data, php, via, callback) {
 
     //send data to php
     ob_ajax.open(via, php, true);
-    if (via == 'post') ob_ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    ob_ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     ob_ajax.send(str_data);
-
-    //check the state request, if completed, pass the response to callback function
     ob_ajax.onreadystatechange = function() {
         if (ob_ajax.readyState == 4) callback(ob_ajax.responseText);
     }
 }
 
-//register click on #btn_cnvimg to get and save image
 var btn_cnvimg = document.getElementById('save');
-if (btn_cnvimg) btn_cnvimg.addEventListener('click', function(e) {
-    let imgname = Math.random().toString(36).substring(7);
+btn_cnvimg.addEventListener('click', function(e) {
+    mask = document.getElementById('mask').value;
+    var img_data = {
+        'cnvimg': save_image.toDataURL('image/png', 1.0),
+        'mask': mask,
+    };
+    console.log(img_data);
+    ajaxSend(img_data, php_file, 'post', function(resp) {
 
-    if (imgname !== null) {
-        //set data that will be send with ajaxSend() to php (base64 PNG image-data of the canvas, and image-name)
-        var img_data = { 'cnvimg': cnv.toDataURL('image/png', 1.0), 'imgname': imgname };
-
-        //send image-data to php file
-        ajaxSend(img_data, php_file, 'post', function(resp) {});
-    }
+    });
 });

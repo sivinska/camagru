@@ -21,12 +21,9 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
 <head>
   <meta charset="UTF-8">
   <title>Camera</title>
-  <link rel="stylesheet" href="style.css">  
+  <link rel="stylesheet" href="../style/style.css">  
   <link href="https://fonts.googleapis.com/css?family=Lora:400,700i" rel="stylesheet">
-  <script
-  src="http://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+
 </head>
 
 
@@ -50,12 +47,12 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
       <div id='img_mask' class='img_mask'><img src="../images/smoketexturepng2.png" class="mask" width="100%"></div>
       <div id='img_mask' class='img_mask'><img src="../images/octogon.png" class="mask" width="100%"></div>
           </div>
-          <canvas id="canvas"></canvas>
+          <canvas id="canvas" width="300" height="300" ></canvas>
           <form method="post" action="">
             <input id="snapshot" name="snap" type="hidden"  value="">
             <input id="mask" name="mask" type="hidden" value="">
             <div class="button-container"> 
-            <button class="button" style="display:none;" id="save" >Save it</button>
+            <button class="button" style="display:none;" id="save"  onClick="window.location.reload()" >Save it</button>
           </div>
           </form>
 </article>
@@ -91,7 +88,7 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
         <div class="wrapper-foot">
         sivinska &copy; - Camagru - 2019
     </div>
-        <script src="new.js"></script>
+        <script src="../style/webcam.js"></script>
      
        		</div>	
         </div>

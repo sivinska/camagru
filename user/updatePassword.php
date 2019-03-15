@@ -4,7 +4,7 @@ require_once "../config/database.php";
 include "nav.php";
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: index.php");
+    header("location: ../index.php");
     exit;
   }
 
@@ -70,7 +70,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
   <meta charset="UTF-8">
   <title>Password reset</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style/style.css">  
   <link href="https://fonts.googleapis.com/css?family=Lora:400,700i" rel="stylesheet">
   
 </head>

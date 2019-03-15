@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once "../config/database.php";
-include "nav.php";
+include_once "config/database.php";
+include "user/nav.php";
 
 
 ?>
@@ -15,7 +15,7 @@ include "nav.php";
 <head>
   <meta charset="UTF-8">
   <title>Welcome to Camagru</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style/style.css">
   <link href="https://fonts.googleapis.com/css?family=Lora:400,700i" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
@@ -26,7 +26,7 @@ include "nav.php";
         if (!$pdo){
           ?>
           <div class="install"> 
-          <p>To install the database <a href="../config/setup.php">click here.</a></p>
+          <p>To install the database <a href="config/setup.php">click here.</a></p>
           </div>
         <?php
         }
@@ -51,9 +51,9 @@ include "nav.php";
               <img src="<?php echo $pic['photo']; ?>">
               <?php if($_SESSION['loggedin']){?>
                 <div class="padding" > <?php echo $pic['likes']; ?>
-                <i class="far fa-heart fa-2x" onclick="window.location.href='likes.php?id=<?php echo $pic['photo_id']; ?>'"></i>
+                <i class="far fa-heart fa-2x" onclick="window.location.href='../user/likes.php?id=<?php echo $pic['photo_id']; ?>'"></i>
                 <?php echo $pic['com']; ?>
-                <i class="far fa-comments fa-2x" onclick="window.location.href='comments.php?id=<?php echo $pic['photo_id']; ?>'"></i>
+                <i class="far fa-comments fa-2x" onclick="window.location.href='../user/comments.php?id=<?php echo $pic['photo_id']; ?>'"></i>
               </div>
               <?php } 
                 else{ ?>

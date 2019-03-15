@@ -107,7 +107,7 @@ btn_cnvimg.addEventListener('click', function(e) {
     };
     console.log(img_data);
     ajaxSend(img_data, php_file, 'post', function(resp) {
-        console.log(JSON.stringify(resp));
+
     });
 });
 //});

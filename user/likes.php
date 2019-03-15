@@ -26,7 +26,7 @@ if ($stmt = $pdo->prepare($sql)){
       $stmt->execute();
     }
       }
-      header("location: index.php");
+      header("location: ../index.php");
   }
 }
   else{
@@ -43,7 +43,7 @@ if ($stmt = $pdo->prepare($sql)){
   $stmt->execute();
 }
     }
-    header("location: index.php");
+    header("location: ../index.php");
   }
 
 }

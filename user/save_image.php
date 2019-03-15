@@ -22,7 +22,7 @@ $mask = $_POST['mask'];
 $cnvimg = str_replace('data:image/png;base64,', '', $cnvimg);
 $cnvimg = str_replace(' ', '+', $cnvimg);
 $data = base64_decode($cnvimg);
-$target_dir = "uploads/".$_SESSION['user_id']."/";
+$target_dir = "../uploads/".$_SESSION['user_id']."/";
 if (!file_exists($target_dir))
         mkdir($target_dir, 0777, true);
 
@@ -65,7 +65,5 @@ if ($stmt = $pdo->prepare($sql)){
     $stmt->execute();    
 }
 
-//output response (link to image file, or error message)
-//print $success ? 'Image: <a href="'. $file .'" target="_blank">'. $file .'</a>' : 'Unable to save the file.';
 
 ?>

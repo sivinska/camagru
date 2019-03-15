@@ -69,14 +69,14 @@ footer {
 
 #main {
     background-color: rgba(255, 255, 255, 0.25);
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin-top: 70px;
+    margin-bottom: 40px;
     padding: 15px;
     max-width: 1020px;
     border-radius: 4px;
 }
 
-@media(max-width:520px) {
+@media(max-width:700px) {
     #main {
         margin-top: 150px;
         min-width: 350px;
@@ -237,7 +237,7 @@ ul li:hover>ul {
     }
 }
 
-@media(max-width:450px) {
+@media(max-width:700px) {
     #choose_masks {
         margin-top: 10px;
         width: 300px;
@@ -414,7 +414,7 @@ ul li:hover>ul {
     }
 }
 
-@media(max-width:520px) {
+@media(max-width:700px) {
     #webcam {
         width: 300px;
         height: 300px;
@@ -430,7 +430,7 @@ ul li:hover>ul {
     }
 }
 
-@media(max-width:520px) {
+@media(max-width:700px) {
     #canvas_img {
         width: 300px;
         height: 300px;
@@ -523,6 +523,10 @@ ul li:hover>ul {
     display: none;
 }
 
+#copy {
+    display: none;
+}
+
 #canvas_img {
     width: 100%;
     height: 100%;
@@ -560,7 +564,7 @@ ul li:hover>ul {
     border-radius: 4px;
 }
 
-@media(max-width:400px) {
+@media(max-width:700px) {
     #img_mask {
         background-color: #7F7F7F;
         height: 90px;
@@ -604,7 +608,7 @@ ul li:hover>ul {
     }
 }
 
-@media (max-width:520px) {
+@media (max-width:700px) {
     #thumbnails {
         width: 200px;
     }

@@ -100,7 +100,7 @@ if (!empty($email) ){
 <head>
   <meta charset="UTF-8">
   <title>Your profile</title>
-  <link rel="stylesheet" href="style.css"> 
+  <link rel="stylesheet" href="../style/style.css">  
   <link href="https://fonts.googleapis.com/css?family=Lora:400,700i" rel="stylesheet">
 </head>
 <body>

@@ -73,7 +73,7 @@ if ($_SESSION["loggedin"] && $_SERVER["REQUEST_METHOD"] == "POST")
 <head>
   <meta charset="UTF-8">
   <title>Your account</title>
-  <link rel="stylesheet" href="style.css">  
+  <link rel="stylesheet" href="../style/style.css">  
   <link href="https://fonts.googleapis.com/css?family=Lora:400,700i" rel="stylesheet">
 </head>
 <body>

@@ -1,18 +1,18 @@
 <div class="wrapper">
   <nav>
     <ul>
-      <li><a href="index.php">Gallery</a></li>
+      <li><a href="../index.php">Gallery</a></li>
       <li>
       <?php
 		  	if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
         {
-          echo '<a href="account.php">Your account</a>';
+          echo '<a href="../user/account.php">Your account</a>';
         }
         else{
           echo '
                 
-                  <li><a href="login.php">Login</a></li>
-                  <li><a href="register.php">Register</a></li>
+                  <li><a href="../user/login.php">Login</a></li>
+                  <li><a href="../user/register.php">Register</a></li>
                 ';
         }
       ?>
@@ -21,7 +21,7 @@
       <?php
 		  	if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
               {
-                  echo '<a href="camera.php">Camera</a>';
+                  echo '<a href="../user/camera.php">Camera</a>';
               }
             else{
                 echo '';
@@ -32,7 +32,7 @@
       <?php
 		  	if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
               {
-                  echo '<a href="logout.php">Logout</a>';
+                  echo '<a href="../user/logout.php">Logout</a>';
               }
             else{
                 echo '';

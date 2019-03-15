@@ -2,7 +2,7 @@
 session_start();
  
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: index.php");
+    header("location: ../index.php");
     exit;
 }
  
@@ -56,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["user_id"] = $id;
                             $_SESSION["username"] = $username;                            
                             
-                            header("location: index.php");
+                            header("location: ../index.php");
                         } else{
                             $password_err = "The password you entered was not valid.";
                         }
@@ -84,7 +84,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
   <meta charset="UTF-8">
   <title>Login</title>
-  <link rel="stylesheet" href="style.css">  
+  <link rel="stylesheet" href="../style/style.css">  
   <link href="https://fonts.googleapis.com/css?family=Lora:400,700i" rel="stylesheet">
 
 </head>

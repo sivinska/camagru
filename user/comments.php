@@ -80,7 +80,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>Comments</title>
 
 		<meta charset="utf-8">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../style/style.css">  
         <link href="https://fonts.googleapis.com/css?family=Lora:400,700i" rel="stylesheet">
 	</head>
 	<body>
