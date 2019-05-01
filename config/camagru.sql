@@ -21,8 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `camagru`
 --
-CREATE DATABASE IF NOT EXISTS `wktjmhfmeq80m9nj` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `wktjmhfmeq80m9nj`;
+CREATE DATABASE IF NOT EXISTS `camagru` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `camagru`;
 
 -- --------------------------------------------------------
 
