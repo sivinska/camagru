@@ -3,7 +3,7 @@
 $DB_DSN = 'mysql:host=nr84dudlpkazpylz.chr7pe7iynqr.eu-west-1.rds.amazonaws.com; dbname=wktjmhfmeq80m9nj';
 $DB_USER = 'r27geybatkim6x9g';
 $DB_PASSWORD = "goau3mbk301t8zqs";
-$PORT = 3306
+$PORT = 3306;
 
  
 /* Attempt to connect to MySQL database */
