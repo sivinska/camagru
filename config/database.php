@@ -7,7 +7,7 @@ $DB_PASSWORD = "goau3mbk301t8zqs";
  
 /* Attempt to connect to MySQL database */
 try{
-    $pdo = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+    $pdo = new PDO('mysql://r27geybatkim6x9g:goau3mbk301t8zqs@nr84dudlpkazpylz.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/wktjmhfmeq80m9nj');
     // Set the PDO error mode to exception
     $pdo->setAttribute(PDO::ERRMODE_EXCEPTION);
 } catch(PDOException $e){
