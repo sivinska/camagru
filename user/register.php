@@ -39,12 +39,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
-                /*if($stmt->rowCount() == 1){
+                if($stmt->rowCount() == 1){
                     $email_err = "This email is already taken.";
-                } else{*/
+                } 
+                else{
                     $email = test_input($_POST["email"]);
-                
-            } else{
+                }
+            } 
+            else {
                 echo "Oops! Something went wrong. Please try again later.";
             }
         }
@@ -222,8 +224,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 </form>
         </div>
     </div>
-    <div class="wrapper-foot">
-        sivinska &copy; - Camagru - 2019
-    </div>
+    <footer class="wrapper-foot">
+          sivinska &copy; - Camagru - 2019
+</footer>
 </body>
 </html>

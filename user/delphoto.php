@@ -52,8 +52,8 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
 
                         <form action='delete.php' method='post'>
                         <div id='img2'>
-                            <img class='img2' src="<?php echo $pic['photo']; ?>">
-                                <div class="padding" > <?php echo $pic['likes']; ?>
+                            <img class='img2' src="../<?php echo $pic['photo']; ?>">
+                                <div class="padding1" > <?php echo $pic['likes']; ?>
                                 <i class="far fa-heart fa-2x"></i>
                                 <?php echo $pic['com']; ?>
                                 <i class="far fa-comments fa-2x"></i>
@@ -69,9 +69,9 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
             </article>
         </div>
     </div>
-<div class="wrapper-foot">
-    sivinska &copy; - Camagru - 2019
-</div>
+<footer class="wrapper-foot">
+          sivinska &copy; - Camagru - 2019
+</footer>
 
 <script>
 var buttons = document.getElementsByTagName("button");

@@ -6,7 +6,7 @@ include_once "config/database.php";
 
 ?>
 
- 
+
 
 
 
@@ -28,16 +28,12 @@ include_once "config/database.php";
           <div class="install"> 
           <p>To install the database <a href="config/setup.php">click here.</a></p>
           </div>
-        <?php
+        <?php 
         }
-        else 
-        
-       
-        {
-   
-   include "user/nav.php";
-   ?>
-   
+        else { 
+          include "user/nav.php";
+          
+          ?>
     <div id="main">
     
       <div id="gallery">
@@ -91,18 +87,17 @@ if ($page > 1):
 
 ?></div>
       </div>  
-      <div class="wrapper-foot">
+      
+<footer class="wrapper-foot">
           sivinska &copy; - Camagru - 2019
-</div>
-    </div>
-
+</footer>
 
 
 </body>
 
 
 
- 
+
 
 
 </html>

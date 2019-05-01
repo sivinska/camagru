@@ -117,9 +117,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 
             </form>
     </div>
-    <div class="wrapper-foot">
-        sivinska &copy; - Camagru - 2019
-    </div>
+    
 </div>
+<footer class="wrapper-foot">
+          sivinska &copy; - Camagru - 2019
+</footer>
 </body>
 </html>

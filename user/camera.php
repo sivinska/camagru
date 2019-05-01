@@ -56,7 +56,7 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
           </div>
           </form>
 </article>
-  <footer>
+  <footer1>
   <div>
   <p class="pstyle">Don't have a camera? <a href="nocamera.php">Click here.</a></span>
   </div>
@@ -76,24 +76,24 @@ if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
             foreach ($result as $pic)
             {
               echo"
-              <img border='3px solid #7F7F7F'  width='200' height='200' src='".$pic['photo']."'>";
+              <img border='3px solid #7F7F7F'  width='200' height='200' src='../".$pic['photo']."'>";
             }
           }
         ?>
         </div>
-                 </footer>
+                 </footer1>
             </div>
         </div>
         
-        <div class="wrapper-foot">
-        sivinska &copy; - Camagru - 2019
-    </div>
+        
         <script src="../style/webcam.js"></script>
      
        		</div>	
         </div>
 
-
+<footer class="wrapper-foot">
+          sivinska &copy; - Camagru - 2019
+</footer>
 
 </body>
     

@@ -135,7 +135,7 @@ if (!empty($email) ){
                         <input class="input" type="text" name="username" placeholder="Modify your username" class="form-control" value="<?php echo $username; ?>">
                         <span class="focus-input"></span>
                         </div>
-                        <div>
+                        <div class="center">
                             Do you wish to recieve notification by mail?
                         <label class="container">Yes
                         <input class="checkbox" type="checkbox" <?php if ($result[0]['notification'] === 'yes') { echo 'checked="checked"'; } ?> name="notif" onclick="window.location.href='notif.php'">
@@ -151,9 +151,9 @@ if (!empty($email) ){
         </div>
     </div>
 </div>
-<div class="wrapper-foot">
-    sivinska &copy; - Camagru - 2019
-</div>
+<footer class="wrapper-foot">
+          sivinska &copy; - Camagru - 2019
+</footer>
 
 </body>
 </html>

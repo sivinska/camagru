@@ -122,8 +122,8 @@ unset($pdo);
                 </form>
         </div>
     </div>
-<div class="wrapper-foot">
-    sivinska &copy; - Camagru - 2019
-</div>
+    <footer class="wrapper-foot">
+          sivinska &copy; - Camagru - 2019
+</footer>
 </body>
 </html>

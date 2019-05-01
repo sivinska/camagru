@@ -125,8 +125,8 @@ if ($_SESSION["loggedin"] && $_SERVER["REQUEST_METHOD"] == "POST")
             </article>
         </div>
     </div>
-<div class="wrapper-foot">
-    sivinska &copy; - Camagru - 2019
-</div>
+    <footer class="wrapper-foot">
+          sivinska &copy; - Camagru - 2019
+</footer>
 </body>
 </html>

@@ -52,8 +52,8 @@ $sql = "SELECT * FROM images WHERE user_id = :user_id ORDER BY date DESC";
                 foreach ($result as $pic)
                 { ?>
                   <div id='img2'>
-                  <img class='img2' src="<?php echo $pic['photo']; ?>">
-                    <div class="padding" > <?php echo $pic['likes']; ?>
+                  <img class='img2' src="../<?=  $pic['photo'] ?>">
+                    <div class="padding1" > <?php echo $pic['likes']; ?>
                     <i class="far fa-heart fa-2x"></i>
                     <?php echo $pic['com']; ?>
                     <i class="far fa-comments fa-2x" onclick="window.location.href='comments.php?id=<?php echo $pic['photo_id']; ?>'"></i>
@@ -65,8 +65,8 @@ $sql = "SELECT * FROM images WHERE user_id = :user_id ORDER BY date DESC";
       </article>
     </div>
   </div>
-<div class="wrapper-foot">
+<footer class="wrapper-foot">
     sivinska &copy; - Camagru - 2019
-</div>
+</footer>
 </body>
 </html>

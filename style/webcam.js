@@ -12,7 +12,7 @@
             };
         },
         function(err) {
-            console.log("An error occured! " + err);
+
         });
 
 
@@ -105,7 +105,7 @@ btn_cnvimg.addEventListener('click', function(e) {
         'cnvimg': save_image.toDataURL('image/png', 1.0),
         'mask': mask,
     };
-    console.log(img_data);
+
     ajaxSend(img_data, php_file, 'post', function(resp) {
 
     });

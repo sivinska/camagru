@@ -3,7 +3,7 @@ session_start();
 
 require_once "../config/database.php";
 include "nav.php";
-include "helper.php";
+
 
 if(!isset($_SESSION["loggedin"]) && !$_SESSION["loggedin"] === true){
     header("location: login.php");
@@ -53,7 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 Someone left a comment on your photo!
                  
                 Click this link to read the comment:
-                http://localhost:8080/user/action.php?id='.$photo_id.'
+                http://localhost:8080/user/comments.php?id='.$photo_id.'
                  
                 '; // Our message above including the link
                                      
@@ -96,7 +96,7 @@ $stmt->execute();
 $result = $stmt->fetchAll();
 foreach ($result as $pic){
     echo"
-  <div id='img'><img class='img' src='".$pic['photo']."'></div>";
+  <div id='img'><img class='img' src='../".$pic['photo']."'></div>";
 }
 }?></article><aside>
 <table class="table1">
@@ -133,6 +133,6 @@ $sql = "SELECT * FROM comments WHERE photo_id = :photo_id";
 
 </div>
             </div>
-<div class="wrapper-foot">
-        sivinska &copy; - Camagru - 2019
-    </div>
+            <footer class="wrapper-foot">
+          sivinska &copy; - Camagru - 2019
+</footer>
