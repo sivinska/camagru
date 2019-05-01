@@ -1,8 +1,8 @@
 <?php
 
-$DB_DSN = 'mysql:host=localhost; dbname=camagru';
-$DB_USER = 'root';
-$DB_PASSWORD = "Katinukas";
+$DB_DSN = 'mysql:host=nr84dudlpkazpylz.chr7pe7iynqr.eu-west-1.rds.amazonaws.com; dbname=wktjmhfmeq80m9nj';
+$DB_USER = 'r27geybatkim6x9g';
+$DB_PASSWORD = "goau3mbk301t8zqs";
 
  
 /* Attempt to connect to MySQL database */
