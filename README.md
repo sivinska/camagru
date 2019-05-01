@@ -36,3 +36,6 @@ $DB_PASSWORD = "yourMysqlPassword";``
 * places:places
 * animals:animals
 
+## OR you can test it directly on the heroku
+https://camagru-sivinska.herokuapp.com/
+
