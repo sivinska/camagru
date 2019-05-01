@@ -32,8 +32,11 @@ include_once "config/database.php";
         }
         else 
         
-        include "user/nav.php";
-        { ?>
+       
+        {
+   
+   include "user/nav.php";
+   ?>
    
     <div id="main">
     
